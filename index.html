@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 Unit 2 Week 1 Prove It | Complex Number Inspector</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f6f9fb;
+    color: #1f2933;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hero {
+    background: #0f2d44;
+    color: white;
+    padding: 24px;
+    border-radius: 10px;
+}
+
+.card {
+    background: white;
+    border-left: 6px solid #2f80a8;
+    padding: 18px;
+    border-radius: 10px;
+    margin-top: 18px;
+}
+
+.green {
+    background: #eefaf1;
+    border-left-color: #3ca65c;
+}
+
+.yellow {
+    background: #fff8e6;
+    border-left-color: #f2b705;
+}
+
+.red {
+    background: #fdecea;
+    border-left-color: #c0392b;
+}
+
+.purple {
+    background: #f3e5f5;
+    border-left-color: #9c64a6;
+}
+
+.problem {
+    background: #f6f9fb;
+    border: 1px solid #d6e6ef;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 21px;
+    margin: 12px 0;
+}
+
+.step {
+    margin: 8px 0;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    max-width: 560px;
+    padding: 12px;
+    font-size: 17px;
+    border: 2px solid #d6e6ef;
+    border-radius: 8px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+button {
+    background: #0f2d44;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 12px;
+}
+
+button:hover {
+    background: #173f5f;
+}
+
+#missionFeedback {
+    display: none;
+}
+
+#certificate {
+    display: none;
+    border: 4px solid #0f2d44;
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    margin-top: 22px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+td,
+th {
+    border: 1px solid #d6e6ef;
+    padding: 10px;
+}
+
+th {
+    background: #0f2d44;
+    color: white;
+}
+
+.small {
+    font-size: 14px;
+}
+
+@media print {
+    button,
+    .no-print {
+        display: none;
+    }
+
+    body {
+        background: white;
+    }
+}
+
+@media (max-width: 700px) {
+    .problem {
+        font-size: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="hero">
+        <h1>Algebra 2 | Unit 2 Week 1</h1>
+        <p>Prove It! &mdash; Complex Number Inspector</p>
+    </div>
+
+    <div class="card">
+        <h2>Mission Briefing</h2>
+        <p>You have been selected to serve as a <strong>Complex Number Inspector</strong>.</p>
+        <p>Your job is to inspect complex number work, explain what is correct, identify errors, and solve several problems on your own.</p>
+        <p>This is a <strong>Prove It!</strong> activity. You will not receive hints or answers while working. The mission will only conclude when all required responses are correct.</p>
+
+        <label for="studentName"><strong>Student Name:</strong></label><br>
+        <input id="studentName" placeholder="First and last name">
+
+        <br>
+        <button onclick="startMission()">Begin Mission</button>
+    </div>
+
+    <div id="missionArea" style="display:none;">
+
+        <div class="card yellow">
+            <h2>Directions</h2>
+            <p>Complete all four case files.</p>
+            <p>Use standard complex number form such as <strong>7 - 4i</strong>, <strong>-3 + 8i</strong>, <strong>i</strong>, <strong>-i</strong>, <strong>1</strong>, or <strong>-1</strong>.</p>
+            <p>Do not refresh the page after beginning, because your case files may change.</p>
+        </div>
+
+        <div class="card green">
+            <h2>Case File 1 &mdash; Identify the Parts</h2>
+            <p>Inspect the complex number below. Enter the real part and the imaginary part.</p>
+
+            <div class="problem" id="case1Number"></div>
+
+            <label for="case1Real"><strong>Real Part:</strong></label><br>
+            <input id="case1Real" placeholder="Example: -5">
+
+            <br>
+
+            <label for="case1Imaginary"><strong>Imaginary Part:</strong></label><br>
+            <input id="case1Imaginary" placeholder="Example: 9i">
+
+            <br>
+
+            <label for="case1Reason"><strong>Explain why this is a complex number:</strong></label><br>
+            <textarea id="case1Reason" placeholder="Write a brief explanation using the form a + bi."></textarea>
+        </div>
+
+        <div class="card purple">
+            <h2>Case File 2 &mdash; Review a Correct Solution</h2>
+            <p>The worked solution below is correct. Review it and be prepared to explain why each step is valid.</p>
+
+            <div class="problem" id="case2CorrectWork"></div>
+
+            <label for="case2Explanation"><strong>Briefly explain why the solution is correct:</strong></label><br>
+            <textarea id="case2Explanation" placeholder="Explain what happened to the real parts, imaginary parts, or powers of i."></textarea>
+        </div>
+
+        <div class="card red">
+            <h2>Case File 3 &mdash; Review an Incorrect Solution</h2>
+            <p>The worked solution below contains an error. Identify the first mistake and enter the correct final answer.</p>
+
+            <div class="problem" id="case3IncorrectWork"></div>
+
+            <label for="case3Mistake"><strong>What is the first mistake?</strong></label><br>
+            <select id="case3Mistake">
+                <option value="">Choose one</option>
+                <option value="realImaginary">The real parts and imaginary parts were combined incorrectly.</option>
+                <option value="sign">A sign error occurred when subtracting or combining terms.</option>
+                <option value="iSquared">The expression used i² incorrectly.</option>
+                <option value="powerCycle">The repeating power pattern of i was used incorrectly.</option>
+                <option value="distribution">The expression was not fully distributed.</option>
+            </select>
+
+            <br>
+
+            <label for="case3CorrectAnswer"><strong>Correct final answer:</strong></label><br>
+            <input id="case3CorrectAnswer" placeholder="Example: 12 + i">
+        </div>
+
+        <div class="card yellow">
+            <h2>Case File 4 &mdash; Solve Three Problems</h2>
+            <p>Solve all three problems below. They may involve adding or subtracting complex numbers, multiplying complex numbers, or simplifying powers of <strong>i</strong>.</p>
+
+            <h3 style="color:#0f2d44;">Problem A</h3>
+            <div class="problem" id="case4ProblemA"></div>
+            <label for="case4AnswerA"><strong>Answer A:</strong></label><br>
+            <input id="case4AnswerA" placeholder="Type your answer">
+
+            <h3 style="color:#0f2d44;">Problem B</h3>
+            <div class="problem" id="case4ProblemB"></div>
+            <label for="case4AnswerB"><strong>Answer B:</strong></label><br>
+            <input id="case4AnswerB" placeholder="Type your answer">
+
+            <h3 style="color:#0f2d44;">Problem C</h3>
+            <div class="problem" id="case4ProblemC"></div>
+            <label for="case4AnswerC"><strong>Answer C:</strong></label><br>
+            <input id="case4AnswerC" placeholder="Type your answer">
+        </div>
+
+        <p style="text-align:center;">
+            <button onclick="concludeMission()">Conclude Mission</button>
+        </p>
+
+        <div id="missionFeedback" class="card red">
+            <h2>Mission Not Complete Yet</h2>
+            <p>Please review and correct the item(s) listed below, then try concluding again.</p>
+            <div id="correctionList"></div>
+        </div>
+
+    </div>
+
+    <div id="certificate">
+        <h2 style="color:#0f2d44;">Mission Complete</h2>
+        <p><strong>Algebra 2 Unit 2 Week 1 Prove It! completed successfully.</strong></p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Student Name</th>
+                    <td id="certName"></td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td id="certDate"></td>
+                </tr>
+                <tr>
+                    <th>Time of Submission</th>
+                    <td id="certTime"></td>
+                </tr>
+                <tr>
+                    <th>Completion Code</th>
+                    <td id="certCode"></td>
+                </tr>
+                <tr>
+                    <th>Mastery Evidence</th>
+                    <td>Identifying real and imaginary parts, explaining complex number form, reviewing correct and incorrect work, simplifying operations, and simplifying powers of i</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Screenshot this screen and submit it in Canvas.</strong></p>
+    </div>
+
+</div>
+
+<script>
+let missionStarted = false;
+
+let case1 = {};
+let case2 = {};
+let case3 = {};
+let case4 = {};
+
+function randInt(min, max) {
+    let n = Math.floor(Math.random() * (max - min + 1)) + min;
+    return n === 0 ? 1 : n;
+}
+
+function formatComplex(real, imag) {
+    if (imag === 0) return String(real);
+    if (real === 0) {
+        if (imag === 1) return "i";
+        if (imag === -1) return "-i";
+        return imag + "i";
+    }
+
+    let imagPart = "";
+    if (imag === 1) imagPart = " + i";
+    else if (imag === -1) imagPart = " - i";
+    else if (imag > 0) imagPart = " + " + imag + "i";
+    else imagPart = " - " + Math.abs(imag) + "i";
+
+    return real + imagPart;
+}
+
+function formatProblemComplex(real, imag) {
+    return formatComplex(real, imag);
+}
+
+function normalize(input) {
+    return input
+        .toLowerCase()
+        .replace(/\s+/g, "")
+        .replace(/−/g, "-")
+        .replace(/\+\-/g, "-")
+        .replace(/1i/g, "i")
+        .replace(/\+i/g, "+i")
+        .replace(/-i/g, "-i");
+}
+
+function normalizeComplex(input) {
+    return normalize(input);
+}
+
+function randomComplex() {
+    return {
+        real: randInt(-9, 9),
+        imag: randInt(-9, 9)
+    };
+}
+
+function powerOfI(exp) {
+    const remainder = exp % 4;
+    if (remainder === 0) return "1";
+    if (remainder === 1) return "i";
+    if (remainder === 2) return "-1";
+    return "-i";
+}
+
+function startMission() {
+    const name = document.getElementById("studentName").value.trim();
+
+    if (!name) {
+        alert("Please enter your name before beginning the mission.");
+        return;
+    }
+
+    if (!missionStarted) {
+        generateMission();
+        missionStarted = true;
+    }
+
+    document.getElementById("missionArea").style.display = "block";
+    document.getElementById("missionArea").scrollIntoView({ behavior: "smooth" });
+}
+
+function generateMission() {
+    generateCase1();
+    generateCase2();
+    generateCase3();
+    generateCase4();
+}
+
+function generateCase1() {
+    const z = randomComplex();
+
+    case1 = {
+        display: formatComplex(z.real, z.imag),
+        real: String(z.real),
+        imaginary: formatComplex(0, z.imag)
+    };
+
+    document.getElementById("case1Number").innerHTML = case1.display;
+}
+
+function generateCase2() {
+    const bank = [];
+
+    let a = randomComplex();
+    let b = randomComplex();
+    let addReal = a.real + b.real;
+    let addImag = a.imag + b.imag;
+
+    bank.push({
+        html: `
+            <div class="step"><strong>Problem:</strong> (${formatComplex(a.real, a.imag)}) + (${formatComplex(b.real, b.imag)})</div>
+            <div class="step">Combine real parts: ${a.real} + ${b.real} = ${addReal}</div>
+            <div class="step">Combine imaginary parts: ${formatComplex(0, a.imag)} + ${formatComplex(0, b.imag)} = ${formatComplex(0, addImag)}</div>
+            <div class="step"><strong>Answer:</strong> ${formatComplex(addReal, addImag)}</div>
+        `
+    });
+
+    let c = randomComplex();
+    let d = randomComplex();
+    let subReal = c.real - d.real;
+    let subImag = c.imag - d.imag;
+
+    bank.push({
+        html: `
+            <div class="step"><strong>Problem:</strong> (${formatComplex(c.real, c.imag)}) - (${formatComplex(d.real, d.imag)})</div>
+            <div class="step">Distribute the negative sign to the second complex number.</div>
+            <div class="step">Combine real parts: ${c.real} - ${d.real} = ${subReal}</div>
+            <div class="step">Combine imaginary parts: ${formatComplex(0, c.imag)} - (${formatComplex(0, d.imag)}) = ${formatComplex(0, subImag)}</div>
+            <div class="step"><strong>Answer:</strong> ${formatComplex(subReal, subImag)}</div>
+        `
+    });
+
+    const e = { real: randInt(1, 6), imag: randInt(1, 6) };
+    const f = { real: randInt(1, 6), imag: randInt(-6, 6) };
+    const multReal = e.real * f.real - e.imag * f.imag;
+    const multImag = e.real * f.imag + e.imag * f.real;
+
+    bank.push({
+        html: `
+            <div class="step"><strong>Problem:</strong> (${formatComplex(e.real, e.imag)})(${formatComplex(f.real, f.imag)})</div>
+            <div class="step">Distribute each term.</div>
+            <div class="step">${e.real * f.real} ${e.real * f.imag >= 0 ? "+" : "-"} ${Math.abs(e.real * f.imag)}i ${e.imag * f.real >= 0 ? "+" : "-"} ${Math.abs(e.imag * f.real)}i ${e.imag * f.imag >= 0 ? "+" : "-"} ${Math.abs(e.imag * f.imag)}i<sup>2</sup></div>
+            <div class="step">Use i<sup>2</sup> = -1.</div>
+            <div class="step"><strong>Answer:</strong> ${formatComplex(multReal, multImag)}</div>
+        `
+    });
+
+    case2 = bank[Math.floor(Math.random() * bank.length)];
+    document.getElementById("case2CorrectWork").innerHTML = case2.html;
+}
+
+function generateCase3() {
+    const incorrectBank = [];
+
+    incorrectBank.push({
+        type: "realImaginary",
+        correctAnswer: "11 + 3i",
+        html: `
+            <div class="step"><strong>Problem:</strong> (3 + 5i) + (8 - 2i)</div>
+            <div class="step">Student work:</div>
+            <div class="step">3 + 8 = 11</div>
+            <div class="step">5i + 2i = 7i</div>
+            <div class="step"><strong>Student answer:</strong> 11 + 7i</div>
+        `
+    });
+
+    incorrectBank.push({
+        type: "sign",
+        correctAnswer: "4 + 11i",
+        html: `
+            <div class="step"><strong>Problem:</strong> (6 + 4i) - (2 - 7i)</div>
+            <div class="step">Student work:</div>
+            <div class="step">6 - 2 = 4</div>
+            <div class="step">4i - 7i = -3i</div>
+            <div class="step"><strong>Student answer:</strong> 4 - 3i</div>
+        `
+    });
+
+    incorrectBank.push({
+        type: "iSquared",
+        correctAnswer: "2 - 5i",
+        html: `
+            <div class="step"><strong>Problem:</strong> (2 + i)(3 - 4i)</div>
+            <div class="step">Student work:</div>
+            <div class="step">6 - 8i + 3i - 4i<sup>2</sup></div>
+            <div class="step">6 - 5i - 4</div>
+            <div class="step"><strong>Student answer:</strong> 2 - 5i</div>
+        `
+    });
+
+    incorrectBank.push({
+        type: "powerCycle",
+        correctAnswer: "-1",
+        html: `
+            <div class="step"><strong>Problem:</strong> i<sup>10</sup></div>
+            <div class="step">Student work:</div>
+            <div class="step">10 ÷ 4 has a remainder of 2.</div>
+            <div class="step">i<sup>10</sup> = i<sup>4</sup></div>
+            <div class="step"><strong>Student answer:</strong> 1</div>
+        `
+    });
+
+    incorrectBank.push({
+        type: "distribution",
+        correctAnswer: "11 + 10i",
+        html: `
+            <div class="step"><strong>Problem:</strong> (2 + 3i)(4 - i)</div>
+            <div class="step">Student work:</div>
+            <div class="step">8 - 2i + 12i</div>
+            <div class="step"><strong>Student answer:</strong> 8 + 10i</div>
+        `
+    });
+
+    case3 = incorrectBank[Math.floor(Math.random() * incorrectBank.length)];
+    document.getElementById("case3IncorrectWork").innerHTML = case3.html;
+}
+
+function generateCase4() {
+    const addSub = generateAddSubProblem();
+    const multiply = generateMultiplyProblem();
+    const power = generatePowerProblem();
+
+    const problems = [
+        { label: "A", data: addSub },
+        { label: "B", data: multiply },
+        { label: "C", data: power }
+    ];
+
+    shuffle(problems);
+
+    case4 = {};
+
+    problems.forEach((item, index) => {
+        const slot = ["A", "B", "C"][index];
+        case4[slot] = item.data;
+        document.getElementById(`case4Problem${slot}`).innerHTML = item.data.problem;
+    });
+}
+
+function generateAddSubProblem() {
+    const a = randomComplex();
+    const b = randomComplex();
+    const subtract = Math.random() < 0.5;
+
+    if (subtract) {
+        return {
+            problem: `(${formatComplex(a.real, a.imag)}) - (${formatComplex(b.real, b.imag)})`,
+            answer: formatComplex(a.real - b.real, a.imag - b.imag)
+        };
+    }
+
+    return {
+        problem: `(${formatComplex(a.real, a.imag)}) + (${formatComplex(b.real, b.imag)})`,
+        answer: formatComplex(a.real + b.real, a.imag + b.imag)
+    };
+}
+
+function generateMultiplyProblem() {
+    const a = { real: randInt(1, 6), imag: randInt(-6, 6) };
+    const b = { real: randInt(1, 6), imag: randInt(-6, 6) };
+
+    return {
+        problem: `(${formatComplex(a.real, a.imag)})(${formatComplex(b.real, b.imag)})`,
+        answer: formatComplex(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real)
+    };
+}
+
+function generatePowerProblem() {
+    const exp = randInt(5, 35);
+
+    return {
+        problem: `i<sup>${exp}</sup>`,
+        answer: powerOfI(exp)
+    };
+}
+
+function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+function explanationHasContent(id) {
+    return document.getElementById(id).value.trim().length >= 20;
+}
+
+function concludeMission() {
+    const corrections = [];
+
+    const case1Real = normalize(document.getElementById("case1Real").value);
+    const case1Imaginary = normalize(document.getElementById("case1Imaginary").value);
+
+    if (case1Real !== normalize(case1.real)) {
+        corrections.push("Case File 1 — Real Part");
+    }
+
+    if (case1Imaginary !== normalize(case1.imaginary)) {
+        corrections.push("Case File 1 — Imaginary Part");
+    }
+
+    if (!explanationHasContent("case1Reason")) {
+        corrections.push("Case File 1 — Explanation");
+    }
+
+    if (!explanationHasContent("case2Explanation")) {
+        corrections.push("Case File 2 — Explanation");
+    }
+
+    const case3Mistake = document.getElementById("case3Mistake").value;
+    const case3Answer = normalizeComplex(document.getElementById("case3CorrectAnswer").value);
+
+    if (case3Mistake !== case3.type) {
+        corrections.push("Case File 3 — First Mistake");
+    }
+
+    if (case3Answer !== normalizeComplex(case3.correctAnswer)) {
+        corrections.push("Case File 3 — Correct Final Answer");
+    }
+
+    ["A", "B", "C"].forEach(slot => {
+        const answer = normalizeComplex(document.getElementById(`case4Answer${slot}`).value);
+        const correct = normalizeComplex(case4[slot].answer);
+
+        if (answer !== correct) {
+            corrections.push(`Case File 4 — Problem ${slot}`);
+        }
+    });
+
+    if (corrections.length > 0) {
+        document.getElementById("missionFeedback").style.display = "block";
+        document.getElementById("correctionList").innerHTML =
+            corrections.map(item => `<p>☐ ${item}</p>`).join("");
+        document.getElementById("missionFeedback").scrollIntoView({ behavior: "smooth" });
+        return;
+    }
+
+    const now = new Date();
+
+    document.getElementById("missionFeedback").style.display = "none";
+    document.getElementById("certName").textContent = document.getElementById("studentName").value.trim();
+    document.getElementById("certDate").textContent = now.toLocaleDateString();
+    document.getElementById("certTime").textContent = now.toLocaleTimeString();
+    document.getElementById("certCode").textContent =
+        "U2W1-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+
+    document.getElementById("certificate").style.display = "block";
+    document.getElementById("certificate").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>
