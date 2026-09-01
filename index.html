@@ -3,4280 +3,471 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Algebra 2 Unit 2 Week 1 Prove It | Complex Number Inspector</title>
-
 <style>
-:root {
-    --navy: #0f2d44;
-    --navy-hover: #173f5f;
-    --blue: #2f80a8;
-    --light-blue: #f0f7fb;
-    --green: #3ca65c;
-    --light-green: #eefaf1;
-    --yellow: #f2b705;
-    --light-yellow: #fff8e6;
-    --red: #c0392b;
-    --light-red: #fdecea;
-    --purple: #9c64a6;
-    --light-purple: #f3e5f5;
-    --gray-900: #1f2933;
-    --gray-700: #52606d;
-    --gray-500: #7b8794;
-    --gray-300: #cbd5df;
-    --gray-200: #d6e6ef;
-    --gray-100: #f6f9fb;
-    --white: #ffffff;
-    --shadow: 0 6px 20px rgba(15,45,68,0.10);
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #edf3f7;
-    color: var(--gray-900);
-    line-height: 1.6;
-    margin: 0;
-    padding: 20px;
-}
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.hero {
-    background: var(--navy);
-    color: white;
-    padding: 24px;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-}
-
-.hero h1 {
-    margin: 0;
-}
-
-.hero p {
-    margin: 8px 0 0;
-    font-size: 18px;
-}
-
-.card {
-    background: white;
-    border: 1px solid var(--gray-200);
-    border-left: 6px solid var(--blue);
-    padding: 18px;
-    border-radius: 10px;
-    margin-top: 18px;
-    box-shadow: var(--shadow);
-}
-
-.card h2,
-.card h3 {
-    color: var(--navy);
-}
-
-.card h2 {
-    margin-top: 0;
-}
-
-.green {
-    background: var(--light-green);
-    border-left-color: var(--green);
-}
-
-.yellow {
-    background: var(--light-yellow);
-    border-left-color: var(--yellow);
-}
-
-.red {
-    background: var(--light-red);
-    border-left-color: var(--red);
-}
-
-.purple {
-    background: var(--light-purple);
-    border-left-color: var(--purple);
-}
-
-.blue {
-    background: var(--light-blue);
-    border-left-color: var(--blue);
-}
-
-.problem {
-    background: var(--gray-100);
-    border: 1px solid var(--gray-200);
-    padding: 16px;
-    border-radius: 8px;
-    font-size: 21px;
-    margin: 12px 0;
-}
-
-.step {
-    margin: 8px 0;
-}
-
-input,
-select,
-textarea {
-    width: 100%;
-    max-width: 620px;
-    padding: 12px;
-    font-size: 17px;
-    font-family: Arial, Helvetica, sans-serif;
-    border: 2px solid var(--gray-200);
-    border-radius: 8px;
-    margin-top: 6px;
-    margin-bottom: 12px;
-    background: white;
-}
-
-textarea {
-    min-height: 110px;
-    resize: vertical;
-}
-
-button {
-    background: var(--navy);
-    color: white;
-    border: none;
-    padding: 12px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 12px;
-}
-
-button:hover {
-    background: var(--navy-hover);
-}
-
-button.secondary {
-    background: var(--gray-700);
-}
-
-button.secondary:hover {
-    background: #3e4c59;
-}
-
-button.success {
-    background: #2f7d46;
-}
-
-button.success:hover {
-    background: #25663a;
-}
-
-button.danger {
-    background: #a93226;
-}
-
-button.danger:hover {
-    background: #8f2b21;
-}
-
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible,
-canvas:focus-visible {
-    outline: 4px solid rgba(242,183,5,0.55);
-    outline-offset: 3px;
-}
-
-.status-grid {
-    display: grid;
-    grid-template-columns: repeat(4,minmax(0,1fr));
-    gap: 10px;
-    margin-top: 16px;
-}
-
-.status-item {
-    background: white;
-    border: 1px solid var(--gray-200);
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-}
-
-.status-label {
-    display: block;
-    color: var(--gray-700);
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.status-value {
-    display: block;
-    color: var(--navy);
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 2px;
-}
-
-.task-tools {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
-    margin-top: 10px;
-}
-
-.check-count {
-    font-weight: bold;
-    color: var(--navy);
-}
-
-.feedback {
-    display: none;
-    margin-top: 12px;
-    padding: 12px;
-    border-radius: 8px;
-}
-
-.feedback.correct {
-    display: block;
-    background: var(--light-green);
-    border: 1px solid #94d3a2;
-    color: #245f35;
-}
-
-.feedback.incorrect {
-    display: block;
-    background: var(--light-red);
-    border: 1px solid #e5aaa4;
-    color: #8e2c22;
-}
-
-.subproblem {
-    background: white;
-    border: 1px solid var(--gray-200);
-    border-radius: 10px;
-    padding: 16px;
-    margin-top: 20px;
-}
-
-.subproblem h3 {
-    margin-top: 0;
-}
-
-.whiteboard-section {
-    margin-top: 18px;
-    padding-top: 15px;
-    border-top: 2px solid rgba(15,45,68,0.12);
-}
-
-.whiteboard-section h3 {
-    margin-bottom: 4px;
-}
-
-.whiteboard-help {
-    color: var(--gray-700);
-    margin-top: 0;
-}
-
-.canvas-wrap {
-    width: 100%;
-    border: 2px solid var(--gray-300);
-    border-radius: 8px;
-    overflow: hidden;
-    background: white;
-}
-
-canvas.whiteboard {
-    display: block;
-    width: 100%;
-    height: 300px;
-    background: white;
-    cursor: crosshair;
-    touch-action: none;
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-.board-controls {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-}
-
-.board-controls label {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 8px;
-}
-
-.board-controls input[type="range"] {
-    width: 120px;
-    margin: 0;
-    padding: 0;
-}
-
-#missionFeedback,
-#completionReport {
-    display: none;
-}
-
-/* ---------- COMPLETION REPORT ---------- */
-
-.report-header {
-    background: var(--navy);
-    color: white;
-    padding: 24px;
-    border-radius: 10px;
-    margin-top: 20px;
-}
-
-.report-header h1 {
-    margin: 0;
-}
-
-.report-header p {
-    margin: 8px 0 0;
-}
-
-.report-section {
-    background: white;
-    border: 1px solid var(--gray-200);
-    border-radius: 10px;
-    padding: 18px;
-    margin-top: 18px;
-}
-
-.report-section h2,
-.report-section h3 {
-    color: var(--navy);
-}
-
-.report-section h2 {
-    margin-top: 0;
-}
-
-.report-response {
-    background: var(--gray-100);
-    border: 1px solid var(--gray-200);
-    border-radius: 8px;
-    padding: 12px;
-    margin-top: 8px;
-    white-space: pre-wrap;
-    word-break: break-word;
-}
-
-.question-metrics {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 12px 0;
-}
-
-.question-metrics > div {
-    flex: 1 1 180px;
-    background: var(--gray-100);
-    border: 1px solid var(--gray-200);
-    border-radius: 8px;
-    padding: 10px 12px;
-}
-
-.report-board {
-    background: white;
-    border: 1px solid var(--gray-200);
-    border-radius: 8px;
-    padding: 8px;
-    margin-top: 8px;
-}
-
-.report-board img {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: 500px;
-    object-fit: contain;
-}
-
-.no-board {
-    color: var(--gray-700);
-    font-style: italic;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 12px;
-}
-
-td,
-th {
-    border: 1px solid var(--gray-200);
-    padding: 10px;
-    vertical-align: top;
-}
-
-th {
-    background: var(--navy);
-    color: white;
-    text-align: left;
-}
-
-.summary-table th {
-    width: 35%;
-}
-
-.print-actions {
-    text-align: center;
-    margin: 20px 0;
-}
-
-#certificate {
-    background: white;
-    border: 4px solid var(--navy);
-    border-radius: 12px;
-    padding: 24px;
-    margin-top: 24px;
-}
-
-#certificate h2 {
-    color: var(--navy);
-    text-align: center;
-    font-size: 30px;
-    margin-top: 0;
-}
-
-.certificate-title {
-    text-align: center;
-    font-size: 18px;
-}
-
-.certificate-seal {
-    text-align: center;
-    font-size: 48px;
-    margin: 12px 0;
-}
-
-@media (max-width: 720px) {
-    body {
-        padding: 10px;
-    }
-
-    .status-grid {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-    }
-
-    canvas.whiteboard {
-        height: 270px;
-    }
-
-    .problem {
-        font-size: 18px;
-    }
-}
-
-@media print {
-    @page {
-        margin: 0.55in;
-    }
-
-    body {
-        background: white;
-        padding: 0;
-        font-size: 11pt;
-    }
-
-    .container {
-        max-width: none;
-    }
-
-    .no-print,
-    button {
-        display: none !important;
-    }
-
-    #startCard,
-    #missionArea,
-    #missionFeedback {
-        display: none !important;
-    }
-
-    #completionReport {
-        display: block !important;
-    }
-
-    .report-section,
-    #certificate {
-        break-inside: avoid;
-    }
-
-    .report-board img {
-        max-height: 4.5in;
-    }
-
-    #certificate {
-        break-before: page;
-    }
+:root{
+  --navy:#0f2d44; --navy2:#173f5f; --blue:#2f80a8; --lb:#f0f7fb;
+  --green:#3ca65c; --lg:#eefaf1; --yellow:#f2b705; --ly:#fff8e6;
+  --red:#b8392e; --lr:#fdecea; --gray:#52606d; --line:#d6e6ef;
+  --paper:#fff; --ink:#1f2933; --soft:#f6f9fb; --shadow:0 6px 20px rgba(15,45,68,.10)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#edf3f7;color:var(--ink);line-height:1.55;margin:0;padding:18px}
+.container{max-width:1000px;margin:0 auto}
+.hero,.report-header{background:var(--navy);color:#fff;padding:24px;border-radius:10px;box-shadow:var(--shadow)}
+.hero h1,.report-header h1{margin:0;font-size:30px}.hero p,.report-header p{margin:6px 0 0;font-size:18px}
+.card{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--blue);padding:18px;border-radius:10px;margin-top:18px;box-shadow:var(--shadow)}
+.card h2,.card h3{color:var(--navy)}.card h2{margin-top:0}.blue{background:var(--lb);border-left-color:var(--blue)}.green{background:var(--lg);border-left-color:var(--green)}.yellow{background:var(--ly);border-left-color:var(--yellow)}.red{background:var(--lr);border-left-color:var(--red)}
+.problem{background:var(--soft);border:1px solid var(--line);padding:15px;border-radius:8px;font-size:21px;margin:12px 0}
+.reasoning{background:var(--lg);border:1px solid #b9dfc4;padding:14px;border-radius:8px;margin:14px 0}
+.workbox{background:#fff;border:2px solid var(--line);padding:14px;border-radius:9px;margin:14px 0}
+label{font-weight:700;color:var(--navy)}
+input,select,textarea{width:100%;max-width:690px;padding:11px;font:17px Arial,Helvetica,sans-serif;border:2px solid var(--line);border-radius:8px;margin:6px 0 12px;background:#fff}
+textarea{min-height:80px;resize:vertical}
+.short{max-width:320px}.inline-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.triple-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+button{background:var(--navy);color:#fff;border:0;padding:11px 17px;border-radius:8px;cursor:pointer;font-size:16px;margin:6px 6px 6px 0}button:hover{background:var(--navy2)}button.secondary{background:var(--gray)}button.danger{background:#9f3027}button.success{background:#2f7d46}
+button:disabled{opacity:.55;cursor:not-allowed}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,canvas:focus-visible{outline:4px solid rgba(242,183,5,.55);outline-offset:3px}
+.feedback{display:none;padding:12px;border-radius:8px;margin-top:10px;font-weight:700}.feedback.good{display:block;background:var(--lg);border:1px solid #b9dfc4;color:#205d34}.feedback.bad{display:block;background:var(--ly);border:1px solid #ecd37a;color:#694f00}
+.status-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.status-item{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center}.status-label{display:block;font-size:13px;color:var(--gray);font-weight:700}.status-value{display:block;font-size:20px;color:var(--navy);font-weight:700}
+.checkline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.checks{font-weight:700;color:var(--gray)}
+.canvas-wrap{border:2px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}.whiteboard{display:block;width:100%;height:260px;background:#fff;touch-action:none}
+.board-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px}.board-controls label{font-size:14px}.board-controls input[type=range]{width:120px;margin:0}
+table{width:100%;border-collapse:collapse;margin-top:10px}th,td{border:1px solid var(--line);padding:9px;vertical-align:top}th{background:var(--navy);color:#fff;text-align:left}
+.small{font-size:14px;color:var(--gray)}.hidden{display:none!important}.report-section{background:#fff;border:1px solid var(--line);padding:16px;border-radius:8px;margin-top:16px}.report-response{white-space:pre-wrap;background:var(--soft);border:1px solid var(--line);padding:10px;border-radius:7px}.report-board img{max-width:100%;border:1px solid var(--line);border-radius:7px}.teacher-note{background:var(--ly);border-left:6px solid var(--yellow);padding:14px;border-radius:8px;margin-top:14px}
+.score-table td:first-child{font-weight:700;width:70px}.footer-note{font-size:14px;color:var(--gray);margin-top:16px}
+@media(max-width:720px){body{padding:9px}.status-grid,.inline-grid,.triple-grid{grid-template-columns:1fr}.whiteboard{height:240px}.problem{font-size:18px}}
+@media print{
+  @page{margin:.55in}body{background:#fff;padding:0;font-size:10.5pt}.no-print{display:none!important}
+  #report{display:block!important}.container{max-width:none}.report-section{break-inside:avoid}.report-board img{max-height:4.2in}
 }
 </style>
 </head>
-
 <body>
-
 <div class="container">
+  <div class="hero no-print">
+    <h1>Algebra 2 | Unit 2 Week 1</h1>
+    <p>Prove It! — Complex Number Inspector</p>
+  </div>
 
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
-
-    <div class="hero no-print">
-        <h1>Algebra 2 | Unit 2 Week 1</h1>
-        <p>Prove It! &mdash; Complex Number Inspector</p>
+  <section id="start" class="card blue no-print">
+    <h2>Assessment Briefing</h2>
+    <p><strong>Learning objective:</strong> I can add, subtract, and multiply complex numbers using <em>i</em><sup>2</sup> = −1.</p>
+    <p><strong>Arizona standard:</strong> A2.N-CN.A.1 — Apply <em>i</em><sup>2</sup> = −1 and the commutative, associative, and distributive properties to add, subtract, and multiply complex numbers; write answers in <em>a + bi</em> form.</p>
+    <div class="card green" style="box-shadow:none">
+      <h3 style="margin-top:0">How this Prove It works</h3>
+      <p>Show enough mathematics for your teacher to judge proficiency. The computer checks objective answers, but it does <strong>not</strong> assign your 0–6 Prove It score.</p>
+      <p>Your report preserves first attempts, revised/final responses, answer-check counts, required whiteboards, short reasoning checks, and elapsed time.</p>
     </div>
-
-
-    <!-- =====================================================
-         START
-    ====================================================== -->
-
-    <div id="startCard" class="card no-print">
-
-        <h2>Mission Briefing</h2>
-
-        <p>
-            You have been selected to serve as a
-            <strong>Complex Number Inspector</strong>.
-        </p>
-
-        <p>
-            Your job is to inspect complex-number work,
-            explain what is correct, identify errors,
-            and solve several problems on your own.
-        </p>
-
-        <p>
-            Your final completion report will include your
-            answers, written explanations, whiteboard work,
-            checks used, and total time.
-        </p>
-
-        <div class="card blue" style="box-shadow:none;">
-            <h3 style="margin-top:0;">Your Submission Will Include</h3>
-
-            <p>☐ Every randomized problem or case you received</p>
-            <p>☐ Every answer you typed or selected</p>
-            <p>☐ Your written explanations</p>
-            <p>☐ Whiteboard work where calculations are appropriate</p>
-            <p>☐ Checks used for every assessed item</p>
-            <p>☐ Total checks and total assignment time</p>
-            <p>☐ A completion certificate</p>
-        </div>
-
-        <label for="studentName">
-            <strong>Student Name:</strong>
-        </label>
-
-        <br>
-
-        <input
-            id="studentName"
-            autocomplete="name"
-            placeholder="First and last name"
-        >
-
-        <br>
-
-        <button type="button" onclick="startMission()">
-            Begin Mission
-        </button>
-
-    </div>
-
-
-    <!-- =====================================================
-         MISSION
-    ====================================================== -->
-
-    <div id="missionArea" class="no-print" style="display:none;">
-
-
-        <!-- STATUS -->
-
-        <div class="card blue">
-
-            <h2>Mission Progress</h2>
-
-            <div class="status-grid">
-
-                <div class="status-item">
-                    <span class="status-label">Student</span>
-                    <span class="status-value" id="statusStudent">—</span>
-                </div>
-
-                <div class="status-item">
-                    <span class="status-label">Time</span>
-                    <span class="status-value" id="statusTime">0:00</span>
-                </div>
-
-                <div class="status-item">
-                    <span class="status-label">Items Mastered</span>
-                    <span class="status-value" id="statusMastered">0 / 6</span>
-                </div>
-
-                <div class="status-item">
-                    <span class="status-label">Total Checks</span>
-                    <span class="status-value" id="statusChecks">0</span>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- DIRECTIONS -->
-
-        <div class="card yellow">
-
-            <h2>Directions</h2>
-
-            <p>
-                Complete all four case files.
-            </p>
-
-            <p>
-                Use standard complex-number form such as
-                <strong>7 - 4i</strong>,
-                <strong>-3 + 8i</strong>,
-                <strong>i</strong>,
-                <strong>-i</strong>,
-                <strong>1</strong>, or
-                <strong>-1</strong>.
-            </p>
-
-            <p>
-                Case File 4 contains three separately checked problems.
-            </p>
-
-            <p>
-                Do not refresh the page after beginning because
-                your randomized case files may change.
-            </p>
-
-        </div>
-
-
-        <!-- =================================================
-             CASE 1
-        ================================================== -->
-
-        <div class="card green">
-
-            <h2>
-                Case File 1 &mdash; Identify the Parts
-            </h2>
-
-            <p>
-                Inspect the complex number below.
-                Enter the real part and imaginary part,
-                then explain why the number is complex.
-            </p>
-
-            <div class="problem" id="case1Number"></div>
-
-            <label for="case1Real">
-                <strong>Real Part:</strong>
-            </label>
-
-            <br>
-
-            <input
-                id="case1Real"
-                autocomplete="off"
-                placeholder="Example: -5"
-            >
-
-            <br>
-
-            <label for="case1Imaginary">
-                <strong>Imaginary Part:</strong>
-            </label>
-
-            <br>
-
-            <input
-                id="case1Imaginary"
-                autocomplete="off"
-                placeholder="Example: 9i"
-            >
-
-            <br>
-
-            <label for="case1Reason">
-                <strong>
-                    Explain why this is a complex number:
-                </strong>
-            </label>
-
-            <br>
-
-            <textarea
-                id="case1Reason"
-                placeholder="Write a brief explanation using the form a + bi."
-            ></textarea>
-
-            <div class="task-tools">
-
-                <button type="button" onclick="checkCase1()">
-                    Check Case File 1
-                </button>
-
-                <span class="check-count">
-                    Checks used:
-                    <span id="case1CheckCount">0</span>
-                </span>
-
-            </div>
-
-            <div
-                id="case1Feedback"
-                class="feedback"
-                aria-live="polite"
-            ></div>
-
-        </div>
-
-
-        <!-- =================================================
-             CASE 2
-        ================================================== -->
-
-        <div class="card purple">
-
-            <h2>
-                Case File 2 &mdash; Review a Correct Solution
-            </h2>
-
-            <p>
-                The worked solution below is correct.
-                Review it and explain why the steps are valid.
-            </p>
-
-            <div
-                class="problem"
-                id="case2CorrectWork"
-            ></div>
-
-            <label for="case2Explanation">
-                <strong>
-                    Briefly explain why the solution is correct:
-                </strong>
-            </label>
-
-            <br>
-
-            <textarea
-                id="case2Explanation"
-                placeholder="Explain what happened to the real parts, imaginary parts, or powers of i."
-            ></textarea>
-
-            <div class="task-tools">
-
-                <button type="button" onclick="checkCase2()">
-                    Check Case File 2
-                </button>
-
-                <span class="check-count">
-                    Checks used:
-                    <span id="case2CheckCount">0</span>
-                </span>
-
-            </div>
-
-            <div
-                id="case2Feedback"
-                class="feedback"
-                aria-live="polite"
-            ></div>
-
-        </div>
-
-
-        <!-- =================================================
-             CASE 3
-        ================================================== -->
-
-        <div class="card red">
-
-            <h2>
-                Case File 3 &mdash; Review an Incorrect Solution
-            </h2>
-
-            <p>
-                The worked solution below contains an error.
-                Identify the first mistake and enter the correct
-                final answer.
-            </p>
-
-            <div
-                class="problem"
-                id="case3IncorrectWork"
-            ></div>
-
-            <label for="case3Mistake">
-                <strong>What is the first mistake?</strong>
-            </label>
-
-            <br>
-
-            <select id="case3Mistake">
-
-                <option value="">Choose one</option>
-
-                <option value="realImaginary">
-                    The real parts and imaginary parts were combined incorrectly.
-                </option>
-
-                <option value="sign">
-                    A sign error occurred when subtracting or combining terms.
-                </option>
-
-                <option value="iSquared">
-                    The expression used i² incorrectly.
-                </option>
-
-                <option value="powerCycle">
-                    The repeating power pattern of i was used incorrectly.
-                </option>
-
-                <option value="distribution">
-                    The expression was not fully distributed.
-                </option>
-
-            </select>
-
-            <br>
-
-            <label for="case3CorrectAnswer">
-                <strong>Correct final answer:</strong>
-            </label>
-
-            <br>
-
-            <input
-                id="case3CorrectAnswer"
-                autocomplete="off"
-                placeholder="Example: 12 + i"
-            >
-
-
-            <!-- CASE 3 WHITEBOARD -->
-
-            <div class="whiteboard-section">
-
-                <h3>Show Your Correction Work</h3>
-
-                <p class="whiteboard-help">
-                    Redo the incorrect step or show how you found
-                    the correct final answer. This whiteboard will
-                    appear in your completion report.
-                </p>
-
-                <div class="canvas-wrap">
-
-                    <canvas
-                        id="board3"
-                        class="whiteboard"
-                        tabindex="0"
-                        aria-label="Whiteboard for Case File 3"
-                    ></canvas>
-
-                </div>
-
-                <div class="board-controls">
-
-                    <button
-                        type="button"
-                        class="secondary"
-                        onclick="setBoardMode('board3','draw')"
-                    >
-                        Draw
-                    </button>
-
-                    <button
-                        type="button"
-                        class="secondary"
-                        onclick="setBoardMode('board3','erase')"
-                    >
-                        Erase
-                    </button>
-
-                    <button
-                        type="button"
-                        class="danger"
-                        onclick="clearBoard('board3')"
-                    >
-                        Clear Whiteboard
-                    </button>
-
-                    <label>
-                        Pen size
-
-                        <input
-                            type="range"
-                            min="2"
-                            max="12"
-                            value="3"
-                            oninput="setBoardSize('board3',this.value)"
-                        >
-                    </label>
-
-                </div>
-
-            </div>
-
-
-            <div class="task-tools">
-
-                <button type="button" onclick="checkCase3()">
-                    Check Case File 3
-                </button>
-
-                <span class="check-count">
-                    Checks used:
-                    <span id="case3CheckCount">0</span>
-                </span>
-
-            </div>
-
-            <div
-                id="case3Feedback"
-                class="feedback"
-                aria-live="polite"
-            ></div>
-
-        </div>
-
-
-        <!-- =================================================
-             CASE 4
-        ================================================== -->
-
-        <div class="card yellow">
-
-            <h2>
-                Case File 4 &mdash; Solve Three Problems
-            </h2>
-
-            <p>
-                Solve all three problems. One problem will involve
-                adding or subtracting complex numbers, one will involve
-                multiplication, and one will involve simplifying a
-                power of <strong>i</strong>.
-            </p>
-
-
-            <!-- PROBLEM A -->
-
-            <div class="subproblem">
-
-                <h3>Problem A</h3>
-
-                <div
-                    class="problem"
-                    id="case4ProblemA"
-                ></div>
-
-                <label for="case4AnswerA">
-                    <strong>Answer A:</strong>
-                </label>
-
-                <br>
-
-                <input
-                    id="case4AnswerA"
-                    autocomplete="off"
-                    placeholder="Type your answer"
-                >
-
-
-                <div class="whiteboard-section">
-
-                    <h3>Show Your Work</h3>
-
-                    <p class="whiteboard-help">
-                        Show the algebra, distribution, or power-of-i
-                        reasoning you used.
-                    </p>
-
-                    <div class="canvas-wrap">
-
-                        <canvas
-                            id="board4A"
-                            class="whiteboard"
-                            tabindex="0"
-                            aria-label="Whiteboard for Case File 4 Problem A"
-                        ></canvas>
-
-                    </div>
-
-                    <div class="board-controls">
-
-                        <button
-                            type="button"
-                            class="secondary"
-                            onclick="setBoardMode('board4A','draw')"
-                        >
-                            Draw
-                        </button>
-
-                        <button
-                            type="button"
-                            class="secondary"
-                            onclick="setBoardMode('board4A','erase')"
-                        >
-                            Erase
-                        </button>
-
-                        <button
-                            type="button"
-                            class="danger"
-                            onclick="clearBoard('board4A')"
-                        >
-                            Clear Whiteboard
-                        </button>
-
-                        <label>
-                            Pen size
-
-                            <input
-                                type="range"
-                                min="2"
-                                max="12"
-                                value="3"
-                                oninput="setBoardSize('board4A',this.value)"
-                            >
-                        </label>
-
-                    </div>
-
-                </div>
-
-
-                <div class="task-tools">
-
-                    <button
-                        type="button"
-                        onclick="checkCase4Problem('A')"
-                    >
-                        Check Problem A
-                    </button>
-
-                    <span class="check-count">
-                        Checks used:
-                        <span id="case4ACheckCount">0</span>
-                    </span>
-
-                </div>
-
-                <div
-                    id="case4AFeedback"
-                    class="feedback"
-                    aria-live="polite"
-                ></div>
-
-            </div>
-
-
-            <!-- PROBLEM B -->
-
-            <div class="subproblem">
-
-                <h3>Problem B</h3>
-
-                <div
-                    class="problem"
-                    id="case4ProblemB"
-                ></div>
-
-                <label for="case4AnswerB">
-                    <strong>Answer B:</strong>
-                </label>
-
-                <br>
-
-                <input
-                    id="case4AnswerB"
-                    autocomplete="off"
-                    placeholder="Type your answer"
-                >
-
-
-                <div class="whiteboard-section">
-
-                    <h3>Show Your Work</h3>
-
-                    <p class="whiteboard-help">
-                        Show the algebra, distribution, or power-of-i
-                        reasoning you used.
-                    </p>
-
-                    <div class="canvas-wrap">
-
-                        <canvas
-                            id="board4B"
-                            class="whiteboard"
-                            tabindex="0"
-                            aria-label="Whiteboard for Case File 4 Problem B"
-                        ></canvas>
-
-                    </div>
-
-                    <div class="board-controls">
-
-                        <button
-                            type="button"
-                            class="secondary"
-                            onclick="setBoardMode('board4B','draw')"
-                        >
-                            Draw
-                        </button>
-
-                        <button
-                            type="button"
-                            class="secondary"
-                            onclick="setBoardMode('board4B','erase')"
-                        >
-                            Erase
-                        </button>
-
-                        <button
-                            type="button"
-                            class="danger"
-                            onclick="clearBoard('board4B')"
-                        >
-                            Clear Whiteboard
-                        </button>
-
-                        <label>
-                            Pen size
-
-                            <input
-                                type="range"
-                                min="2"
-                                max="12"
-                                value="3"
-                                oninput="setBoardSize('board4B',this.value)"
-                            >
-                        </label>
-
-                    </div>
-
-                </div>
-
-
-                <div class="task-tools">
-
-                    <button
-                        type="button"
-                        onclick="checkCase4Problem('B')"
-                    >
-                        Check Problem B
-                    </button>
-
-                    <span class="check-count">
-                        Checks used:
-                        <span id="case4BCheckCount">0</span>
-                    </span>
-
-                </div>
-
-                <div
-                    id="case4BFeedback"
-                    class="feedback"
-                    aria-live="polite"
-                ></div>
-
-            </div>
-
-
-            <!-- PROBLEM C -->
-
-            <div class="subproblem">
-
-                <h3>Problem C</h3>
-
-                <div
-                    class="problem"
-                    id="case4ProblemC"
-                ></div>
-
-                <label for="case4AnswerC">
-                    <strong>Answer C:</strong>
-                </label>
-
-                <br>
-
-                <input
-                    id="case4AnswerC"
-                    autocomplete="off"
-                    placeholder="Type your answer"
-                >
-
-
-                <div class="whiteboard-section">
-
-                    <h3>Show Your Work</h3>
-
-                    <p class="whiteboard-help">
-                        Show the algebra, distribution, or power-of-i
-                        reasoning you used.
-                    </p>
-
-                    <div class="canvas-wrap">
-
-                        <canvas
-                            id="board4C"
-                            class="whiteboard"
-                            tabindex="0"
-                            aria-label="Whiteboard for Case File 4 Problem C"
-                        ></canvas>
-
-                    </div>
-
-                    <div class="board-controls">
-
-                        <button
-                            type="button"
-                            class="secondary"
-                            onclick="setBoardMode('board4C','draw')"
-                        >
-                            Draw
-                        </button>
-
-                        <button
-                            type="button"
-                            class="secondary"
-                            onclick="setBoardMode('board4C','erase')"
-                        >
-                            Erase
-                        </button>
-
-                        <button
-                            type="button"
-                            class="danger"
-                            onclick="clearBoard('board4C')"
-                        >
-                            Clear Whiteboard
-                        </button>
-
-                        <label>
-                            Pen size
-
-                            <input
-                                type="range"
-                                min="2"
-                                max="12"
-                                value="3"
-                                oninput="setBoardSize('board4C',this.value)"
-                            >
-                        </label>
-
-                    </div>
-
-                </div>
-
-
-                <div class="task-tools">
-
-                    <button
-                        type="button"
-                        onclick="checkCase4Problem('C')"
-                    >
-                        Check Problem C
-                    </button>
-
-                    <span class="check-count">
-                        Checks used:
-                        <span id="case4CCheckCount">0</span>
-                    </span>
-
-                </div>
-
-                <div
-                    id="case4CFeedback"
-                    class="feedback"
-                    aria-live="polite"
-                ></div>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             FINISH
-        ================================================== -->
-
-        <div class="card blue">
-
-            <h2>Ready to Finish?</h2>
-
-            <p>
-                All six assessed items must be complete before
-                your final report can be generated.
-            </p>
-
-            <p>
-                Review your typed explanations and whiteboard work
-                before concluding the mission.
-            </p>
-
-            <p style="text-align:center;">
-
-                <button
-                    type="button"
-                    class="success"
-                    onclick="concludeMission()"
-                >
-                    Conclude Mission
-                </button>
-
-            </p>
-
-        </div>
-
-
-        <div
-            id="missionFeedback"
-            class="card red"
-        >
-
-            <h2>Mission Not Complete Yet</h2>
-
-            <p>
-                Complete or correct the item(s) below,
-                then try again.
-            </p>
-
-            <div id="correctionList"></div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
-         COMPLETION REPORT
-    ====================================================== -->
-
-    <div id="completionReport">
-
-        <div class="report-header">
-
-            <h1>
-                Algebra 2 Prove It! Submission Report
-            </h1>
-
-            <p>
-                Unit 2 Week 1 &mdash; Complex Number Inspector
-            </p>
-
-        </div>
-
-
-        <div class="card green no-print">
-
-            <h2>Mission Complete</h2>
-
-            <p>
-                This report contains the complete record of your
-                Prove It!: every problem you received, every final
-                response, your written explanations, whiteboard work,
-                checks used, total time, and completion certificate.
-            </p>
-
-            <p>
-                Review the report, then choose
-                <strong>Print / Save as PDF</strong>
-                and submit the saved PDF in Canvas.
-            </p>
-
-            <div class="print-actions">
-
-                <button
-                    type="button"
-                    class="success"
-                    onclick="window.print()"
-                >
-                    Print / Save as PDF
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- SUMMARY -->
-
-        <section class="report-section">
-
-            <h2>Submission Summary</h2>
-
-            <table class="summary-table">
-
-                <tbody>
-
-                    <tr>
-                        <th>Student Name</th>
-                        <td id="reportStudentName"></td>
-                    </tr>
-
-                    <tr>
-                        <th>Assignment</th>
-                        <td>
-                            Algebra 2 Unit 2 Week 1 Prove It! —
-                            Complex Number Inspector
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th>Started</th>
-                        <td id="reportStarted"></td>
-                    </tr>
-
-                    <tr>
-                        <th>Completed</th>
-                        <td id="reportCompleted"></td>
-                    </tr>
-
-                    <tr>
-                        <th>Total Time</th>
-                        <td id="reportElapsed"></td>
-                    </tr>
-
-                    <tr>
-                        <th>Total Checks Used</th>
-                        <td id="reportTotalChecks"></td>
-                    </tr>
-
-                    <tr>
-                        <th>Completion Code</th>
-                        <td id="reportCompletionCode"></td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </section>
-
-
-        <!-- CASE 1 REPORT -->
-
-        <section class="report-section">
-
-            <h2>
-                Case File 1 &mdash; Identify the Parts
-            </h2>
-
-            <div class="question-metrics">
-
-                <div>
-                    <strong>Status:</strong>
-                    Mastered
-                </div>
-
-                <div>
-                    <strong>Checks Used:</strong>
-                    <span id="reportCase1Checks"></span>
-                </div>
-
-            </div>
-
-            <h3>Complex Number Received</h3>
-
-            <div
-                id="reportCase1Problem"
-                class="report-response"
-            ></div>
-
-            <h3>Student Responses</h3>
-
-            <div class="report-response">
-
-                <p>
-                    <strong>Real Part:</strong>
-                    <span id="reportCase1Real"></span>
-                </p>
-
-                <p>
-                    <strong>Imaginary Part:</strong>
-                    <span id="reportCase1Imaginary"></span>
-                </p>
-
-                <p>
-                    <strong>Explanation:</strong>
-                </p>
-
-                <div id="reportCase1Reason"></div>
-
-            </div>
-
-        </section>
-
-
-        <!-- CASE 2 REPORT -->
-
-        <section class="report-section">
-
-            <h2>
-                Case File 2 &mdash; Review a Correct Solution
-            </h2>
-
-            <div class="question-metrics">
-
-                <div>
-                    <strong>Status:</strong>
-                    Completed
-                </div>
-
-                <div>
-                    <strong>Checks Used:</strong>
-                    <span id="reportCase2Checks"></span>
-                </div>
-
-            </div>
-
-            <h3>Worked Solution Received</h3>
-
-            <div
-                id="reportCase2Problem"
-                class="report-response"
-            ></div>
-
-            <h3>Student Explanation</h3>
-
-            <div
-                id="reportCase2Explanation"
-                class="report-response"
-            ></div>
-
-        </section>
-
-
-        <!-- CASE 3 REPORT -->
-
-        <section class="report-section">
-
-            <h2>
-                Case File 3 &mdash; Review an Incorrect Solution
-            </h2>
-
-            <div class="question-metrics">
-
-                <div>
-                    <strong>Status:</strong>
-                    Mastered
-                </div>
-
-                <div>
-                    <strong>Checks Used:</strong>
-                    <span id="reportCase3Checks"></span>
-                </div>
-
-            </div>
-
-            <h3>Incorrect Work Received</h3>
-
-            <div
-                id="reportCase3Problem"
-                class="report-response"
-            ></div>
-
-            <h3>First Mistake Identified</h3>
-
-            <div
-                id="reportCase3Mistake"
-                class="report-response"
-            ></div>
-
-            <h3>Correct Final Answer</h3>
-
-            <div
-                id="reportCase3Answer"
-                class="report-response"
-            ></div>
-
-            <h3>Whiteboard Work</h3>
-
-            <div
-                id="reportBoard3"
-                class="report-board"
-            ></div>
-
-        </section>
-
-
-        <!-- CASE 4A REPORT -->
-
-        <section class="report-section">
-
-            <h2>
-                Case File 4 &mdash; Problem A
-            </h2>
-
-            <div class="question-metrics">
-
-                <div>
-                    <strong>Status:</strong>
-                    Mastered
-                </div>
-
-                <div>
-                    <strong>Checks Used:</strong>
-                    <span id="reportCase4AChecks"></span>
-                </div>
-
-            </div>
-
-            <h3>Problem Received</h3>
-
-            <div
-                id="reportCase4AProblem"
-                class="report-response"
-            ></div>
-
-            <h3>Final Answer</h3>
-
-            <div
-                id="reportCase4AAnswer"
-                class="report-response"
-            ></div>
-
-            <h3>Whiteboard Work</h3>
-
-            <div
-                id="reportBoard4A"
-                class="report-board"
-            ></div>
-
-        </section>
-
-
-        <!-- CASE 4B REPORT -->
-
-        <section class="report-section">
-
-            <h2>
-                Case File 4 &mdash; Problem B
-            </h2>
-
-            <div class="question-metrics">
-
-                <div>
-                    <strong>Status:</strong>
-                    Mastered
-                </div>
-
-                <div>
-                    <strong>Checks Used:</strong>
-                    <span id="reportCase4BChecks"></span>
-                </div>
-
-            </div>
-
-            <h3>Problem Received</h3>
-
-            <div
-                id="reportCase4BProblem"
-                class="report-response"
-            ></div>
-
-            <h3>Final Answer</h3>
-
-            <div
-                id="reportCase4BAnswer"
-                class="report-response"
-            ></div>
-
-            <h3>Whiteboard Work</h3>
-
-            <div
-                id="reportBoard4B"
-                class="report-board"
-            ></div>
-
-        </section>
-
-
-        <!-- CASE 4C REPORT -->
-
-        <section class="report-section">
-
-            <h2>
-                Case File 4 &mdash; Problem C
-            </h2>
-
-            <div class="question-metrics">
-
-                <div>
-                    <strong>Status:</strong>
-                    Mastered
-                </div>
-
-                <div>
-                    <strong>Checks Used:</strong>
-                    <span id="reportCase4CChecks"></span>
-                </div>
-
-            </div>
-
-            <h3>Problem Received</h3>
-
-            <div
-                id="reportCase4CProblem"
-                class="report-response"
-            ></div>
-
-            <h3>Final Answer</h3>
-
-            <div
-                id="reportCase4CAnswer"
-                class="report-response"
-            ></div>
-
-            <h3>Whiteboard Work</h3>
-
-            <div
-                id="reportBoard4C"
-                class="report-board"
-            ></div>
-
-        </section>
-
-
-        <!-- CERTIFICATE -->
-
-        <div id="certificate">
-
-            <div class="certificate-seal">✓</div>
-
-            <h2>Mission Complete</h2>
-
-            <p class="certificate-title">
-                <strong>
-                    Algebra 2 Unit 2 Week 1 Prove It!
-                </strong>
-            </p>
-
-            <p class="certificate-title">
-                Complex Number Inspector
-            </p>
-
-            <table>
-
-                <tbody>
-
-                    <tr>
-                        <th>Student Name</th>
-                        <td id="certName"></td>
-                    </tr>
-
-                    <tr>
-                        <th>Date</th>
-                        <td id="certDate"></td>
-                    </tr>
-
-                    <tr>
-                        <th>Time of Submission</th>
-                        <td id="certTime"></td>
-                    </tr>
-
-                    <tr>
-                        <th>Total Time</th>
-                        <td id="certElapsed"></td>
-                    </tr>
-
-                    <tr>
-                        <th>Total Checks Used</th>
-                        <td id="certChecks"></td>
-                    </tr>
-
-                    <tr>
-                        <th>Completion Code</th>
-                        <td id="certCode"></td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-
-            <h3 style="color:#0f2d44;margin-top:22px;">
-                Mastery Evidence
-            </h3>
-
-            <table>
-
-                <thead>
-
-                    <tr>
-                        <th>Assessment Item</th>
-                        <th>Result</th>
-                        <th>Checks Used</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td>Case File 1 — Identify the Parts</td>
-                        <td>Mastered</td>
-                        <td id="certCase1Checks"></td>
-                    </tr>
-
-                    <tr>
-                        <td>Case File 2 — Explain Correct Work</td>
-                        <td>Completed</td>
-                        <td id="certCase2Checks"></td>
-                    </tr>
-
-                    <tr>
-                        <td>Case File 3 — Error Analysis</td>
-                        <td>Mastered</td>
-                        <td id="certCase3Checks"></td>
-                    </tr>
-
-                    <tr>
-                        <td>Case File 4 — Problem A</td>
-                        <td>Mastered</td>
-                        <td id="certCase4AChecks"></td>
-                    </tr>
-
-                    <tr>
-                        <td>Case File 4 — Problem B</td>
-                        <td>Mastered</td>
-                        <td id="certCase4BChecks"></td>
-                    </tr>
-
-                    <tr>
-                        <td>Case File 4 — Problem C</td>
-                        <td>Mastered</td>
-                        <td id="certCase4CChecks"></td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-            <p style="margin-top:20px;">
-                This certificate accompanies the complete response
-                report shown on the preceding pages.
-            </p>
-
-        </div>
-
-    </div>
-
+    <label for="studentName">Student name</label><br>
+    <input id="studentName" autocomplete="name" placeholder="First and last name">
+    <br><button type="button" onclick="startAssessment()">Begin Prove It</button>
+  </section>
+
+  <main id="assessment" class="hidden no-print">
+    <section class="card blue">
+      <h2>Progress</h2>
+      <div class="status-grid">
+        <div class="status-item"><span class="status-label">Student</span><span id="sName" class="status-value">—</span></div>
+        <div class="status-item"><span class="status-label">Elapsed</span><span id="sTime" class="status-value">0:00</span></div>
+        <div class="status-item"><span class="status-label">Verified Tasks</span><span id="sVerified" class="status-value">0 / 5</span></div>
+        <div class="status-item"><span class="status-label">Checks Used</span><span id="sChecks" class="status-value">0</span></div>
+      </div>
+    </section>
+
+    <section class="card yellow">
+      <h2>Directions</h2>
+      <p>For multi-step tasks, complete <strong>Set Up → Show Your Work → Final Answer</strong> in that order. Use answer checks only after you have committed to your work.</p>
+      <p>Standard form examples: <strong>7 − 4i</strong>, <strong>−3 + 8i</strong>, <strong>i</strong>, <strong>−i</strong>, <strong>1</strong>, or <strong>−1</strong>.</p>
+    </section>
+
+    <section class="card green" id="task1">
+      <h2>Evidence 1 — Read a Complex Number</h2>
+      <div id="t1Problem" class="problem"></div>
+      <div class="inline-grid">
+        <div><label for="t1Real">Real part</label><input id="t1Real" class="short" autocomplete="off"></div>
+        <div><label for="t1B">Coefficient of <em>i</em> (the value of <em>b</em>)</label><input id="t1B" class="short" autocomplete="off"></div>
+      </div>
+      <div class="checkline"><button onclick="checkTask1()">Check Evidence 1</button><span class="checks">Checks: <span id="c1">0</span></span></div>
+      <div id="f1" class="feedback" aria-live="polite"></div>
+    </section>
+
+    <section class="card blue" id="task2">
+      <h2>Evidence 2 — Add or Subtract by Structure</h2>
+      <div id="t2Problem" class="problem"></div>
+      <h3>Step 1: Set Up</h3>
+      <p>Write the calculation you used for each part. These setup boxes are saved for your teacher to review and are <strong>not graded by exact typing format</strong>.</p>
+      <div class="inline-grid">
+        <div><label for="t2RealSetup">Real-part calculation</label><input id="t2RealSetup" autocomplete="off" placeholder="Type the calculation you used"></div>
+        <div><label for="t2ImagSetup">Coefficient-of-i calculation</label><input id="t2ImagSetup" autocomplete="off" placeholder="Type the calculation you used"></div>
+      </div>
+      <h3>Step 2: Show Your Work</h3>
+      <p class="small">No whiteboard is required here. Your two setup expressions already show which like terms you combined.</p>
+      <h3>Step 3: Final Answer</h3>
+      <label for="t2Answer">Write the result in <em>a + bi</em> form.</label><input id="t2Answer" autocomplete="off">
+      <div class="checkline"><button onclick="checkTask2()">Check Evidence 2</button><span class="checks">Checks: <span id="c2">0</span></span></div>
+      <p class="small"><strong>Important:</strong> The checker verifies the final answer only. Your setup is preserved for teacher judgment.</p>
+      <div id="f2" class="feedback" aria-live="polite"></div>
+    </section>
+
+    <section class="card green" id="task3">
+      <h2>Evidence 3 — Multiply Complex Numbers</h2>
+      <div id="t3Problem" class="problem"></div>
+      <h3>Step 1: Set Up</h3>
+      <label for="t3Setup">After distributing, what four-term expression do you get <strong>before</strong> replacing <em>i</em><sup>2</sup>?</label>
+      <input id="t3Setup" autocomplete="off" placeholder="Example form: 6 + 8i - 3i - 4i^2">
+      <h3>Step 2: Show Your Work</h3>
+      <p>Use the whiteboard to combine terms and show where <em>i</em><sup>2</sup> becomes −1.</p>
+      <div class="canvas-wrap"><canvas id="board3" class="whiteboard" tabindex="0" aria-label="Whiteboard for complex-number multiplication"></canvas></div>
+      <div class="board-controls">
+        <button class="secondary" onclick="setBoardMode('board3','draw')">Draw</button><button class="secondary" onclick="setBoardMode('board3','erase')">Erase</button><button class="danger" onclick="clearBoard('board3')">Clear</button>
+        <label>Pen size <input type="range" min="2" max="12" value="3" oninput="setBoardSize('board3',this.value)"></label>
+      </div>
+      <h3>Step 3: Final Answer</h3>
+      <label for="t3Answer">Simplified answer in <em>a + bi</em> form</label><input id="t3Answer" autocomplete="off">
+      <div class="checkline"><button onclick="checkTask3()">Check Evidence 3</button><span class="checks">Checks: <span id="c3">0</span></span></div>
+      <div id="f3" class="feedback" aria-live="polite"></div>
+    </section>
+
+    <section class="card yellow" id="task4">
+      <h2>Evidence 4 — Simplify a Power of <em>i</em></h2>
+      <div id="t4Problem" class="problem"></div>
+      <div class="reasoning">
+        <label for="t4Remainder">Reasoning Check: When the exponent is divided by 4, what is the remainder?</label>
+        <input id="t4Remainder" class="short" inputmode="numeric" autocomplete="off">
+      </div>
+      <label for="t4Answer">Final simplified value</label><input id="t4Answer" class="short" autocomplete="off">
+      <div class="checkline"><button onclick="checkTask4()">Check Evidence 4</button><span class="checks">Checks: <span id="c4">0</span></span></div>
+      <div id="f4" class="feedback" aria-live="polite"></div>
+    </section>
+
+    <section class="card green" id="task5">
+      <h2>Final Challenge — Complete and Use a Complex Number</h2>
+      <p>This task combines addition and multiplication, but the starting information is provided for you.</p>
+      <div id="t5Target" class="problem"></div>
+
+      <h3>Step 1: Set Up</h3>
+      <p>Find the missing complex number <strong>w</strong>.</p>
+      <label for="t5W">What is w?</label>
+      <input id="t5W" autocomplete="off" placeholder="Write in a + bi form">
+
+      <div class="reasoning">
+        <label for="t5Reason">Reasoning Check: What subtraction did you use to find w?</label>
+        <input id="t5Reason" autocomplete="off" placeholder="Example form: target - z">
+      </div>
+
+      <h3>Step 2: Show Your Work</h3>
+      <p>Use the whiteboard to multiply <strong>z · w</strong>. Show your distribution and where <em>i</em><sup>2</sup> becomes −1.</p>
+      <div class="canvas-wrap"><canvas id="board5" class="whiteboard" tabindex="0" aria-label="Whiteboard for final complex-number challenge"></canvas></div>
+      <div class="board-controls">
+        <button class="secondary" onclick="setBoardMode('board5','draw')">Draw</button><button class="secondary" onclick="setBoardMode('board5','erase')">Erase</button><button class="danger" onclick="clearBoard('board5')">Clear</button>
+        <label>Pen size <input type="range" min="2" max="12" value="3" oninput="setBoardSize('board5',this.value)"></label>
+      </div>
+
+      <h3>Step 3: Final Answer</h3>
+      <label for="t5Product">What is z · w?</label>
+      <input id="t5Product" autocomplete="off">
+
+      <div class="checkline"><button onclick="checkTask5()">Check Final Challenge</button><span class="checks">Checks: <span id="c5">0</span></span></div>
+      <div id="f5" class="feedback" aria-live="polite"></div>
+    </section>
+
+    <section class="card blue">
+      <h2>Ready for Teacher Review</h2>
+      <p>The computer only verifies objective components. Your teacher will use your first attempts, final responses, setup, reasoning, whiteboards, checks used, and elapsed time to determine the Prove It score.</p>
+      <div class="teacher-note">
+        <strong>6-point philosophy:</strong> 6 = independent mastery; 5 = proficient and mostly independent; 4 = developing proficiency with some feedback; 3 = good-faith evidence with substantial support/repeated feedback; 0 = no usable evidence or no submission.
+      </div>
+      <p style="text-align:center"><button class="success" onclick="finishAssessment()">Generate Teacher Review Record</button></p>
+      <div id="finishFeedback" class="feedback" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <section id="report" class="hidden">
+    <div class="report-header"><h1>Ready for Teacher Review</h1><p>Algebra 2 Unit 2 Week 1 — Complex Number Inspector</p></div>
+    <section class="card green no-print">
+      <h2>Submission Record Created</h2>
+      <p>This record is evidence for teacher judgment. It does not assign an automatic mastery score.</p>
+      <button class="success" onclick="window.print()">Print / Save as PDF</button>
+    </section>
+    <section class="report-section">
+      <h2>Summary</h2>
+      <table><tbody>
+        <tr><th>Student</th><td id="rName"></td></tr><tr><th>Started</th><td id="rStart"></td></tr><tr><th>Finished</th><td id="rFinish"></td></tr>
+        <tr><th>Elapsed Time</th><td id="rTime"></td></tr><tr><th>Total Answer Checks</th><td id="rChecks"></td></tr><tr><th>Objective Verification</th><td id="rVerified"></td></tr>
+        <tr><th>Learning Objective</th><td>I can add, subtract, and multiply complex numbers using i² = −1.</td></tr>
+        <tr><th>Standard</th><td>A2.N-CN.A.1</td></tr>
+      </tbody></table>
+    </section>
+    <div id="reportTasks"></div>
+    <section class="report-section">
+      <h2>Teacher Scoring Reference</h2>
+      <table class="score-table">
+        <tr><th>Score</th><th>Evidence description</th></tr>
+        <tr><td>6</td><td>Independent mastery with clear, correct work and reasoning and little or no reliance on feedback.</td></tr>
+        <tr><td>5</td><td>Proficient and mostly independent; minor correction or feedback may be needed.</td></tr>
+        <tr><td>4</td><td>Developing proficiency; meaningful understanding is shown, but some feedback is needed.</td></tr>
+        <tr><td>3</td><td>Good-faith attempt showing some understanding, but substantial support or repeated feedback is needed.</td></tr>
+        <tr><td>0</td><td>No usable evidence or no submission.</td></tr>
+      </table>
+      <p class="footer-note">Check counts are evidence of independence and are intentionally not converted to a grade.</p>
+    </section>
+  </section>
 </div>
 
-
 <script>
-
-/* =============================================================
-   STATE
-============================================================= */
-
-const state = {
-    studentName: "",
-    startedAt: null,
-    completedAt: null,
-    completionCode: "",
-
-    checks: {
-        case1: 0,
-        case2: 0,
-        case3: 0,
-        case4A: 0,
-        case4B: 0,
-        case4C: 0
-    },
-
-    mastered: {
-        case1: false,
-        case2: false,
-        case3: false,
-        case4A: false,
-        case4B: false,
-        case4C: false
-    },
-
-    boardImages: {
-        board3: "",
-        board4A: "",
-        board4B: "",
-        board4C: ""
-    }
+"use strict";
+const state={
+ name:"",started:null,finished:null,timer:null,
+ checks:{t1:0,t2:0,t3:0,t4:0,t5:0},
+ verified:{t1:false,t2:false,t3:false,t4:false,t5:false},
+ first:{},boards:{board3:"",board5:""}
 };
+let data={};
+const boardState={};
 
-let missionStarted = false;
-let timerInterval = null;
-
-let case1 = {};
-let case2 = {};
-let case3 = {};
-let case4 = {};
-
-
-/* =============================================================
-   COMPLEX NUMBER HELPERS
-============================================================= */
-
-function randInt(min, max) {
-    let n =
-        Math.floor(
-            Math.random() *
-            (max - min + 1)
-        ) + min;
-
-    return n === 0 ? 1 : n;
+function randInt(min,max){return Math.floor(Math.random()*(max-min+1))+min}
+function nonzero(min,max){let n=0;while(n===0)n=randInt(min,max);return n}
+function fmt(a,b){
+ if(b===0)return String(a);
+ const ip=Math.abs(b)===1?"i":Math.abs(b)+"i";
+ if(a===0)return (b<0?"-":"")+ip;
+ return a+(b<0?" - ":" + ")+ip;
 }
-
-
-function formatComplex(real, imag) {
-
-    if (imag === 0) {
-        return String(real);
-    }
-
-    if (real === 0) {
-
-        if (imag === 1) {
-            return "i";
-        }
-
-        if (imag === -1) {
-            return "-i";
-        }
-
-        return imag + "i";
-    }
-
-    let imagPart = "";
-
-    if (imag === 1) {
-        imagPart = " + i";
-    } else if (imag === -1) {
-        imagPart = " - i";
-    } else if (imag > 0) {
-        imagPart = " + " + imag + "i";
-    } else {
-        imagPart = " - " + Math.abs(imag) + "i";
-    }
-
-    return real + imagPart;
+function parseComplex(raw){
+ let s=String(raw||"").toLowerCase().replace(/−/g,"-").replace(/\s+/g,"").replace(/\*/g,"");
+ if(!s)return null;
+ if(!s.includes("i")){
+   const r=Number(s); return Number.isFinite(r)?{r:r,i:0}:null;
+ }
+ s=s.replace(/i/g,"");
+ if(s===""||s==="+")return {r:0,i:1};
+ if(s==="-")return {r:0,i:-1};
+ let split=-1;
+ for(let k=1;k<s.length;k++){if(s[k]==="+"||s[k]==="-")split=k}
+ if(split<0){const im=Number(s);return Number.isFinite(im)?{r:0,i:im}:null}
+ const r=Number(s.slice(0,split));
+ let imtxt=s.slice(split);
+ if(imtxt==="+")imtxt="1"; if(imtxt==="-")imtxt="-1";
+ const im=Number(imtxt);
+ return Number.isFinite(r)&&Number.isFinite(im)?{r:r,i:im}:null;
 }
-
-
-function normalize(input) {
-    return String(input || "")
-        .toLowerCase()
-        .replace(/\s+/g, "")
-        .replace(/−/g, "-")
-        .replace(/\+\-/g, "-")
-        .replace(/(^|[+\-])1i/g, "$1i");
+function eqComplex(a,b){return a&&b&&Math.abs(a.r-b.r)<1e-9&&Math.abs(a.i-b.i)<1e-9}
+function mult(a,b){return {r:a.r*b.r-a.i*b.i,i:a.r*b.i+a.i*b.r}}
+function add(a,b){return {r:a.r+b.r,i:a.i+b.i}}
+function totalChecks(){return Object.values(state.checks).reduce((a,b)=>a+b,0)}
+function verifiedCount(){return Object.values(state.verified).filter(Boolean).length}
+function setFeedback(id,good,msg){const e=document.getElementById(id);e.className="feedback "+(good?"good":"bad");e.textContent=msg}
+function updateStatus(){
+ document.getElementById("sChecks").textContent=totalChecks();
+ document.getElementById("sVerified").textContent=verifiedCount()+" / 5";
+ Object.keys(state.checks).forEach(k=>{const e=document.getElementById("c"+k.slice(1));if(e)e.textContent=state.checks[k]});
 }
-
-
-function normalizeComplex(input) {
-    return normalize(input);
+function snapshot(key,obj){if(!state.first[key])state.first[key]=JSON.parse(JSON.stringify(obj))}
+function recordCheck(key,obj){snapshot(key,obj);state.checks[key]++;updateStatus()}
+function get(id){return document.getElementById(id).value.trim()}
+function needText(v){return String(v||"").trim().length>0}
+function startAssessment(){
+ const name=get("studentName");
+ if(!name){alert("Enter your name before beginning.");return}
+ state.name=name;state.started=new Date();document.getElementById("sName").textContent=name;
+ generateProblems();document.getElementById("start").classList.add("hidden");document.getElementById("assessment").classList.remove("hidden");
+ setupBoard("board3");setupBoard("board5");state.timer=setInterval(updateTimer,1000);updateTimer();window.scrollTo({top:0,behavior:"smooth"});
 }
-
-
-function randomComplex() {
-    return {
-        real: randInt(-9, 9),
-        imag: randInt(-9, 9)
-    };
+function generateProblems(){
+ const a=nonzero(-9,9),b=nonzero(-9,9);data.t1={a,b};document.getElementById("t1Problem").innerHTML=fmt(a,b);
+ const x={r:nonzero(-8,8),i:nonzero(-8,8)},y={r:nonzero(-8,8),i:nonzero(-8,8)},sub=Math.random()<.5;
+ data.t2={x,y,sub,ans:sub?{r:x.r-y.r,i:x.i-y.i}:add(x,y)};
+ document.getElementById("t2Problem").innerHTML="("+fmt(x.r,x.i)+") "+(sub?"−":"+")+" ("+fmt(y.r,y.i)+")";
+ const m={r:nonzero(-6,6),i:nonzero(-6,6)},n={r:nonzero(-6,6),i:nonzero(-6,6)};
+ data.t3={m,n,ans:mult(m,n)};document.getElementById("t3Problem").innerHTML="("+fmt(m.r,m.i)+")("+fmt(n.r,n.i)+")";
+ const exp=randInt(9,39);const cyc=["1","i","-1","-i"];data.t4={exp,rem:exp%4,ans:cyc[exp%4]};document.getElementById("t4Problem").innerHTML="i<sup>"+exp+"</sup>";
+ const zr=nonzero(-5,5),zi=nonzero(-5,5),wr=nonzero(-5,5),wi=nonzero(-5,5);
+ data.t5={z:{r:zr,i:zi},w:{r:wr,i:wi},target:{r:zr+wr,i:zi+wi},product:mult({r:zr,i:zi},{r:wr,i:wi})};
+ document.getElementById("t5Target").innerHTML=
+   "<strong>Given:</strong> z = "+fmt(zr,zi)+
+   "<br><strong>And:</strong> z + w = "+fmt(zr+wr,zi+wi)+
+   "<br><br>Find <strong>w</strong>, then calculate <strong>z · w</strong>.";
 }
-
-
-function powerOfI(exp) {
-
-    const remainder =
-        ((exp % 4) + 4) % 4;
-
-    if (remainder === 0) return "1";
-    if (remainder === 1) return "i";
-    if (remainder === 2) return "-1";
-
-    return "-i";
+function checkTask1(){
+ const obj={real:get("t1Real"),b:get("t1B")};recordCheck("t1",obj);
+ const ok=Number(obj.real)===data.t1.a&&Number(obj.b)===data.t1.b;
+ state.verified.t1=ok;updateStatus();
+ const msg=ok
+   ?"Objective components verified. Your teacher will still review the evidence."
+   :(state.checks.t1===1
+      ?"Not verified yet. Recheck the real part and the coefficient of i; no answer has been revealed."
+      :"Still not verified. Compare your entries with the form a + bi and identify a and b.");
+ setFeedback("f1",ok,msg);
 }
+function simpleCalcOK(raw,expected){
+ const src=String(raw||"").replace(/−/g,"-").replace(/\s+/g,"");
+ if(!src||!/^[0-9+\-().]+$/.test(src))return false;
 
-
-/* =============================================================
-   START MISSION
-============================================================= */
-
-function startMission() {
-
-    const name =
-        document
-            .getElementById("studentName")
-            .value
-            .trim();
-
-    if (!name) {
-
-        alert(
-            "Please enter your name before beginning the mission."
-        );
-
-        return;
-    }
-
-    state.studentName = name;
-
-    document.getElementById(
-        "statusStudent"
-    ).textContent = name;
-
-
-    /*
-     * IMPORTANT:
-     * Show the mission BEFORE creating the canvases.
-     * Hidden canvases have no usable width.
-     */
-
-    document.getElementById(
-        "missionArea"
-    ).style.display = "block";
-
-
-    if (!missionStarted) {
-
-        state.startedAt =
-            new Date().toISOString();
-
-        generateMission();
-
-        missionStarted = true;
-
-        requestAnimationFrame(
-            function () {
-
-                initializeBoards();
-
-                requestAnimationFrame(
-                    function () {
-                        resizeAllBoards();
-                    }
-                );
-
-            }
-        );
-
-        startTimer();
-    }
-
-    updateProgressDisplay();
-
-    document.getElementById(
-        "missionArea"
-    ).scrollIntoView({
-        behavior: "smooth"
-    });
+ let i=0;
+ function parseExpression(){
+   let value=parseFactor();
+   while(i<src.length && (src[i]==="+" || src[i]==="-")){
+     const op=src[i++], rhs=parseFactor();
+     value=op==="+"?value+rhs:value-rhs;
+   }
+   return value;
+ }
+ function parseFactor(){
+   let sign=1;
+   while(i<src.length && (src[i]==="+" || src[i]==="-")){
+     if(src[i]==="-")sign*=-1;
+     i++;
+   }
+   let value;
+   if(src[i]==="("){
+     i++;
+     value=parseExpression();
+     if(src[i]!==")")throw new Error("Missing )");
+     i++;
+   }else{
+     const start=i;
+     while(i<src.length && /[0-9.]/.test(src[i]))i++;
+     if(start===i)throw new Error("Number expected");
+     value=Number(src.slice(start,i));
+     if(!Number.isFinite(value))throw new Error("Invalid number");
+   }
+   return sign*value;
+ }
+ try{
+   const value=parseExpression();
+   if(i!==src.length)return false;
+   const operatorCount=(src.match(/[+\-]/g)||[]).length;
+   if(operatorCount<1)return false;
+   return Math.abs(value-expected)<1e-9;
+ }catch(e){
+   return false;
+ }
 }
+function checkTask2(){
+ const obj={
+   realSetup:get("t2RealSetup"),
+   imagSetup:get("t2ImagSetup"),
+   answer:get("t2Answer")
+ };
+ recordCheck("t2",obj);
 
+ const setupComplete=needText(obj.realSetup)&&needText(obj.imagSetup);
+ const answerOK=eqComplex(parseComplex(obj.answer),data.t2.ans);
+ const ok=setupComplete&&answerOK;
 
-/* =============================================================
-   GENERATE MISSION
-============================================================= */
+ state.verified.t2=ok;
+ updateStatus();
 
-function generateMission() {
-    generateCase1();
-    generateCase2();
-    generateCase3();
-    generateCase4();
+ let msg;
+ if(ok){
+   msg="Final answer verified. Your setup is saved for teacher review and is not graded by typing format.";
+ }else if(!setupComplete){
+   msg="Enter a calculation in both setup boxes before checking. The computer will not judge the exact format of those calculations.";
+ }else{
+   msg=state.checks.t2===1
+     ?"Your setup has been saved. The final answer is not verified yet; recheck the real and imaginary parts."
+     :"Your setup is still saved as evidence. Recheck only the final a + bi result.";
+ }
+ setFeedback("f2",ok,msg);
 }
-
-
-/* =============================================================
-   CASE 1
-============================================================= */
-
-function generateCase1() {
-
-    const z =
-        randomComplex();
-
-    case1 = {
-        display:
-            formatComplex(
-                z.real,
-                z.imag
-            ),
-
-        real:
-            String(z.real),
-
-        imaginary:
-            formatComplex(
-                0,
-                z.imag
-            )
-    };
-
-    document.getElementById(
-        "case1Number"
-    ).innerHTML =
-        case1.display;
+function boardDirty(id){return !!(boardState[id]&&boardState[id].dirty)}
+function checkTask3(){
+ saveBoard("board3");
+ const obj={setup:get("t3Setup"),answer:get("t3Answer"),board:state.boards.board3?"saved":"blank"};recordCheck("t3",obj);
+ const ok=needText(obj.setup)&&eqComplex(parseComplex(obj.answer),data.t3.ans)&&boardDirty("board3");
+ state.verified.t3=ok;updateStatus();
+ const msg=ok
+   ?"Objective answer verified and whiteboard saved. Your setup and work remain part of the teacher evidence."
+   :(state.checks.t3===1
+      ?"Not verified yet. Make sure you entered a distribution setup, used the whiteboard to show the i² step, and simplified the final answer."
+      :"Still not verified. Recheck the distribution, the i² = −1 substitution, and the final simplification.");
+ setFeedback("f3",ok,msg);
 }
-
-
-/* =============================================================
-   CASE 2
-============================================================= */
-
-function generateCase2() {
-
-    const bank = [];
-
-
-    /* ADDITION */
-
-    const a =
-        randomComplex();
-
-    const b =
-        randomComplex();
-
-    const addReal =
-        a.real + b.real;
-
-    const addImag =
-        a.imag + b.imag;
-
-    bank.push({
-        html: `
-            <div class="step">
-                <strong>Problem:</strong>
-                (${formatComplex(a.real,a.imag)})
-                +
-                (${formatComplex(b.real,b.imag)})
-            </div>
-
-            <div class="step">
-                Combine real parts:
-                ${a.real} + ${b.real} = ${addReal}
-            </div>
-
-            <div class="step">
-                Combine imaginary parts:
-                ${formatComplex(0,a.imag)}
-                +
-                ${formatComplex(0,b.imag)}
-                =
-                ${formatComplex(0,addImag)}
-            </div>
-
-            <div class="step">
-                <strong>Answer:</strong>
-                ${formatComplex(addReal,addImag)}
-            </div>
-        `
-    });
-
-
-    /* SUBTRACTION */
-
-    const c =
-        randomComplex();
-
-    const d =
-        randomComplex();
-
-    const subReal =
-        c.real - d.real;
-
-    const subImag =
-        c.imag - d.imag;
-
-    bank.push({
-        html: `
-            <div class="step">
-                <strong>Problem:</strong>
-                (${formatComplex(c.real,c.imag)})
-                -
-                (${formatComplex(d.real,d.imag)})
-            </div>
-
-            <div class="step">
-                Distribute the negative sign to the second complex number.
-            </div>
-
-            <div class="step">
-                Combine real parts:
-                ${c.real} - ${d.real} = ${subReal}
-            </div>
-
-            <div class="step">
-                Combine imaginary parts:
-                ${formatComplex(0,c.imag)}
-                -
-                (${formatComplex(0,d.imag)})
-                =
-                ${formatComplex(0,subImag)}
-            </div>
-
-            <div class="step">
-                <strong>Answer:</strong>
-                ${formatComplex(subReal,subImag)}
-            </div>
-        `
-    });
-
-
-    /* MULTIPLICATION */
-
-    const e = {
-        real: randInt(1,6),
-        imag: randInt(1,6)
-    };
-
-    const f = {
-        real: randInt(1,6),
-        imag: randInt(-6,6)
-    };
-
-    const first =
-        e.real * f.real;
-
-    const outer =
-        e.real * f.imag;
-
-    const inner =
-        e.imag * f.real;
-
-    const last =
-        e.imag * f.imag;
-
-    const multReal =
-        e.real * f.real -
-        e.imag * f.imag;
-
-    const multImag =
-        e.real * f.imag +
-        e.imag * f.real;
-
-    bank.push({
-        html: `
-            <div class="step">
-                <strong>Problem:</strong>
-                (${formatComplex(e.real,e.imag)})
-                (${formatComplex(f.real,f.imag)})
-            </div>
-
-            <div class="step">
-                Distribute each term.
-            </div>
-
-            <div class="step">
-                ${first}
-                ${outer >= 0 ? "+" : "-"}
-                ${Math.abs(outer)}i
-                ${inner >= 0 ? "+" : "-"}
-                ${Math.abs(inner)}i
-                ${last >= 0 ? "+" : "-"}
-                ${Math.abs(last)}i<sup>2</sup>
-            </div>
-
-            <div class="step">
-                Use i<sup>2</sup> = -1.
-            </div>
-
-            <div class="step">
-                <strong>Answer:</strong>
-                ${formatComplex(multReal,multImag)}
-            </div>
-        `
-    });
-
-
-    case2 =
-        bank[
-            Math.floor(
-                Math.random() *
-                bank.length
-            )
-        ];
-
-    document.getElementById(
-        "case2CorrectWork"
-    ).innerHTML =
-        case2.html;
+function checkTask4(){
+ const obj={remainder:get("t4Remainder"),answer:get("t4Answer")};recordCheck("t4",obj);
+ const ok=Number(obj.remainder)===data.t4.rem&&eqComplex(parseComplex(obj.answer),parseComplex(data.t4.ans));
+ state.verified.t4=ok;updateStatus();
+ setFeedback("f4",ok,ok?"Objective components verified.":(state.checks.t4===1?"Not verified yet. Recheck the remainder when the exponent is divided by 4, then use the repeating cycle of i.":"Still not verified. The powers of i repeat every 4 exponents."));
 }
-
-
-/* =============================================================
-   CASE 3
-============================================================= */
-
-function generateCase3() {
-
-    const bank = [];
-
-
-    bank.push({
-        type: "realImaginary",
-
-        correctAnswer: "11 + 3i",
-
-        html: `
-            <div class="step">
-                <strong>Problem:</strong>
-                (3 + 5i) + (8 - 2i)
-            </div>
-
-            <div class="step">
-                Student work:
-            </div>
-
-            <div class="step">
-                3 + 8 = 11
-            </div>
-
-            <div class="step">
-                5i + 2i = 7i
-            </div>
-
-            <div class="step">
-                <strong>Student answer:</strong>
-                11 + 7i
-            </div>
-        `
-    });
-
-
-    bank.push({
-        type: "sign",
-
-        correctAnswer: "4 + 11i",
-
-        html: `
-            <div class="step">
-                <strong>Problem:</strong>
-                (6 + 4i) - (2 - 7i)
-            </div>
-
-            <div class="step">
-                Student work:
-            </div>
-
-            <div class="step">
-                6 - 2 = 4
-            </div>
-
-            <div class="step">
-                4i - 7i = -3i
-            </div>
-
-            <div class="step">
-                <strong>Student answer:</strong>
-                4 - 3i
-            </div>
-        `
-    });
-
-
-    bank.push({
-        type: "iSquared",
-
-        correctAnswer: "10 - 5i",
-
-        html: `
-            <div class="step">
-                <strong>Problem:</strong>
-                (2 + i)(3 - 4i)
-            </div>
-
-            <div class="step">
-                Student work:
-            </div>
-
-            <div class="step">
-                6 - 8i + 3i - 4i<sup>2</sup>
-            </div>
-
-            <div class="step">
-                6 - 5i - 4
-            </div>
-
-            <div class="step">
-                <strong>Student answer:</strong>
-                2 - 5i
-            </div>
-        `
-    });
-
-
-    bank.push({
-        type: "powerCycle",
-
-        correctAnswer: "-1",
-
-        html: `
-            <div class="step">
-                <strong>Problem:</strong>
-                i<sup>10</sup>
-            </div>
-
-            <div class="step">
-                Student work:
-            </div>
-
-            <div class="step">
-                10 ÷ 4 has a remainder of 2.
-            </div>
-
-            <div class="step">
-                i<sup>10</sup> = i<sup>4</sup>
-            </div>
-
-            <div class="step">
-                <strong>Student answer:</strong>
-                1
-            </div>
-        `
-    });
-
-
-    bank.push({
-        type: "distribution",
-
-        correctAnswer: "11 + 10i",
-
-        html: `
-            <div class="step">
-                <strong>Problem:</strong>
-                (2 + 3i)(4 - i)
-            </div>
-
-            <div class="step">
-                Student work:
-            </div>
-
-            <div class="step">
-                8 - 2i + 12i
-            </div>
-
-            <div class="step">
-                <strong>Student answer:</strong>
-                8 + 10i
-            </div>
-        `
-    });
-
-
-    case3 =
-        bank[
-            Math.floor(
-                Math.random() *
-                bank.length
-            )
-        ];
-
-    document.getElementById(
-        "case3IncorrectWork"
-    ).innerHTML =
-        case3.html;
+function checkTask5(){
+ saveBoard("board5");
+ const obj={w:get("t5W"),reason:get("t5Reason"),product:get("t5Product"),board:state.boards.board5?"saved":"blank"};recordCheck("t5",obj);
+ const w=parseComplex(obj.w),p=parseComplex(obj.product);
+ const wOK=eqComplex(w,data.t5.w);
+ const productOK=eqComplex(p,data.t5.product);
+ const ok=wOK&&productOK&&needText(obj.reason)&&boardDirty("board5");
+ state.verified.t5=ok;updateStatus();
+ let msg;
+ if(ok)msg="Final challenge objectively verified. Your missing number, setup, and whiteboard are saved for teacher review.";
+ else if(state.checks.t5===1)msg="Not verified yet. First find w from the addition statement, then multiply z by that value and show the distribution on the whiteboard.";
+ else msg="Still not verified. Recheck the subtraction used to find w, then recheck the multiplication and i² step.";
+ setFeedback("f5",ok,msg);
 }
-
-
-/* =============================================================
-   CASE 4
-============================================================= */
-
-function generateCase4() {
-
-    const problems = [
-        generateAddSubProblem(),
-        generateMultiplyProblem(),
-        generatePowerProblem()
-    ];
-
-    shuffle(problems);
-
-    case4 = {};
-
-    ["A","B","C"].forEach(
-        function(slot,index) {
-
-            case4[slot] =
-                problems[index];
-
-            document.getElementById(
-                `case4Problem${slot}`
-            ).innerHTML =
-                problems[index].problem;
-        }
-    );
+function finishAssessment(){
+ const missing=Object.keys(state.verified).filter(k=>!state.verified[k]);
+ if(missing.length){
+   setFeedback("finishFeedback",false,"Not ready yet. Objective verification is still needed for: "+missing.map(k=>"Evidence "+k.slice(1)).join(", ")+". Your check history is being preserved.");
+   return;
+ }
+ saveBoard("board3");saveBoard("board5");state.finished=new Date();if(state.timer)clearInterval(state.timer);
+ buildReport();document.getElementById("assessment").classList.add("hidden");document.getElementById("report").classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"});
 }
-
-
-function generateAddSubProblem() {
-
-    const a =
-        randomComplex();
-
-    const b =
-        randomComplex();
-
-    const subtract =
-        Math.random() < 0.5;
-
-    if (subtract) {
-
-        return {
-            problem:
-                `(${formatComplex(a.real,a.imag)}) - (${formatComplex(b.real,b.imag)})`,
-
-            answer:
-                formatComplex(
-                    a.real - b.real,
-                    a.imag - b.imag
-                )
-        };
-    }
-
-    return {
-        problem:
-            `(${formatComplex(a.real,a.imag)}) + (${formatComplex(b.real,b.imag)})`,
-
-        answer:
-            formatComplex(
-                a.real + b.real,
-                a.imag + b.imag
-            )
-    };
+function formatDT(d){return d.toLocaleString()}
+function duration(ms){let s=Math.floor(ms/1000),m=Math.floor(s/60),h=Math.floor(m/60);s%=60;m%=60;return h?`${h}h ${m}m ${s}s`:`${m}m ${s}s`}
+function updateTimer(){if(!state.started)return;document.getElementById("sTime").textContent=duration(new Date()-state.started)}
+function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function firstVal(key,field){return state.first[key]&&state.first[key][field]!==undefined?state.first[key][field]:""}
+function reportBlock(title,key,problem,fields,boardId){
+ const finals={};
+ fields.forEach(([label,id])=>finals[label]=get(id));
+ let rows=fields.map(([label,id])=>`<tr><th>${esc(label)}</th><td><strong>First:</strong> ${esc(firstVal(key,id.replace(/^t\d/,"").replace(/^./,c=>c.toLowerCase()))||"—")}<br><strong>Final:</strong> ${esc(get(id)||"—")}</td></tr>`).join("");
+ // Explicit first-attempt mapping is added below for reliability.
+ const fmap={
+  t1:{t1Real:"real",t1B:"b"},
+  t2:{t2RealSetup:"realSetup",t2ImagSetup:"imagSetup",t2Answer:"answer"},
+  t3:{t3Setup:"setup",t3Answer:"answer"},
+  t4:{t4Remainder:"remainder",t4Answer:"answer"},
+  t5:{t5W:"w",t5Reason:"reason",t5Product:"product"}
+ };
+ rows=fields.map(([label,id])=>`<tr><th>${esc(label)}</th><td><strong>First:</strong> ${esc(firstVal(key,fmap[key][id])||"—")}<br><strong>Final:</strong> ${esc(get(id)||"—")}</td></tr>`).join("");
+ const board=boardId&&state.boards[boardId]?`<h3>Saved Whiteboard</h3><div class="report-board"><img src="${state.boards[boardId]}" alt="Saved student whiteboard for ${esc(title)}"></div>`:"";
+ return `<section class="report-section"><h2>${esc(title)}</h2><p><strong>Objective status:</strong> Verified &nbsp; | &nbsp; <strong>Checks used:</strong> ${state.checks[key]}</p><div class="report-response">${problem}</div><table>${rows}</table>${board}</section>`;
 }
-
-
-function generateMultiplyProblem() {
-
-    const a = {
-        real: randInt(1,6),
-        imag: randInt(-6,6)
-    };
-
-    const b = {
-        real: randInt(1,6),
-        imag: randInt(-6,6)
-    };
-
-    return {
-        problem:
-            `(${formatComplex(a.real,a.imag)})(${formatComplex(b.real,b.imag)})`,
-
-        answer:
-            formatComplex(
-                a.real * b.real -
-                a.imag * b.imag,
-
-                a.real * b.imag +
-                a.imag * b.real
-            )
-    };
+function buildReport(){
+ document.getElementById("rName").textContent=state.name;document.getElementById("rStart").textContent=formatDT(state.started);document.getElementById("rFinish").textContent=formatDT(state.finished);
+ document.getElementById("rTime").textContent=duration(state.finished-state.started);document.getElementById("rChecks").textContent=totalChecks();document.getElementById("rVerified").textContent="5 of 5 objective task checks verified — teacher score pending";
+ const blocks=[];
+ blocks.push(reportBlock("Evidence 1 — Read a Complex Number","t1",fmt(data.t1.a,data.t1.b),[["Real part","t1Real"],["Coefficient b","t1B"]]));
+ blocks.push(reportBlock("Evidence 2 — Add or Subtract by Structure","t2",document.getElementById("t2Problem").textContent,[["Real-part setup","t2RealSetup"],["Coefficient-of-i setup","t2ImagSetup"],["Final answer","t2Answer"]]));
+ blocks.push(reportBlock("Evidence 3 — Multiply Complex Numbers","t3",document.getElementById("t3Problem").textContent,[["Distribution setup","t3Setup"],["Final answer","t3Answer"]],"board3"));
+ blocks.push(reportBlock("Evidence 4 — Power of i","t4","i^"+data.t4.exp,[["Remainder mod 4","t4Remainder"],["Final answer","t4Answer"]]));
+ blocks.push(reportBlock("Final Challenge — Complete and Use a Complex Number","t5","Given z = "+fmt(data.t5.z.r,data.t5.z.i)+" and z + w = "+fmt(data.t5.target.r,data.t5.target.i),[["Missing w","t5W"],["Subtraction used","t5Reason"],["Final product z·w","t5Product"]],"board5"));
+ document.getElementById("reportTasks").innerHTML=blocks.join("");
 }
-
-
-function generatePowerProblem() {
-
-    const exponent =
-        randInt(5,35);
-
-    return {
-        problem:
-            `i<sup>${exponent}</sup>`,
-
-        answer:
-            powerOfI(exponent)
-    };
+function setupBoard(id){
+ const c=document.getElementById(id),ctx=c.getContext("2d");
+ boardState[id]={c,ctx,drawing:false,dirty:false,mode:"draw",size:3,lastX:0,lastY:0};
+ resizeBoard(id);
+ c.addEventListener("pointerdown",e=>beginStroke(id,e));c.addEventListener("pointermove",e=>drawStroke(id,e));c.addEventListener("pointerup",e=>endStroke(id,e));c.addEventListener("pointercancel",e=>endStroke(id,e));
 }
-
-
-function shuffle(array) {
-
-    for (
-        let i = array.length - 1;
-        i > 0;
-        i--
-    ) {
-
-        const j =
-            Math.floor(
-                Math.random() *
-                (i + 1)
-            );
-
-        [array[i],array[j]] =
-            [array[j],array[i]];
-    }
-
-    return array;
+function resizeBoard(id){
+ const b=boardState[id];if(!b)return;const rect=b.c.getBoundingClientRect();if(rect.width<20){requestAnimationFrame(()=>resizeBoard(id));return}
+ const saved=b.dirty?b.c.toDataURL("image/png"):"";const dpr=window.devicePixelRatio||1,w=Math.floor(rect.width),h=window.innerWidth<=720?240:260;
+ b.c.width=Math.floor(w*dpr);b.c.height=Math.floor(h*dpr);b.c.style.height=h+"px";b.ctx.setTransform(dpr,0,0,dpr,0,0);b.ctx.fillStyle="#fff";b.ctx.fillRect(0,0,w,h);
+ if(saved){const img=new Image();img.onload=()=>b.ctx.drawImage(img,0,0,w,h);img.src=saved}
 }
-
-
-/* =============================================================
-   PROGRESS / CHECK HELPERS
-============================================================= */
-
-function recordCheck(item) {
-
-    state.checks[item] += 1;
-
-    updateProgressDisplay();
+function point(b,e){const r=b.c.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+function beginStroke(id,e){const b=boardState[id];if(!b)return;b.drawing=true;b.dirty=true;const p=point(b,e);b.lastX=p.x;b.lastY=p.y;if(b.c.setPointerCapture)try{b.c.setPointerCapture(e.pointerId)}catch(_){}
 }
-
-
-function setMastered(item,value) {
-
-    state.mastered[item] =
-        value;
-
-    updateProgressDisplay();
-}
-
-
-function explanationHasContent(id) {
-
-    return (
-        document
-            .getElementById(id)
-            .value
-            .trim()
-            .length
-        >= 20
-    );
-}
-
-
-function showFeedback(
-    id,
-    correct,
-    message
-) {
-
-    const element =
-        document.getElementById(id);
-
-    element.className =
-        correct
-            ? "feedback correct"
-            : "feedback incorrect";
-
-    element.textContent =
-        message;
-}
-
-
-function updateProgressDisplay() {
-
-    const totalChecks =
-        Object.values(
-            state.checks
-        ).reduce(
-            function(total,value) {
-                return total + value;
-            },
-            0
-        );
-
-    const mastered =
-        Object.values(
-            state.mastered
-        ).filter(Boolean).length;
-
-    document.getElementById(
-        "statusChecks"
-    ).textContent =
-        totalChecks;
-
-    document.getElementById(
-        "statusMastered"
-    ).textContent =
-        `${mastered} / 6`;
-
-    document.getElementById(
-        "case1CheckCount"
-    ).textContent =
-        state.checks.case1;
-
-    document.getElementById(
-        "case2CheckCount"
-    ).textContent =
-        state.checks.case2;
-
-    document.getElementById(
-        "case3CheckCount"
-    ).textContent =
-        state.checks.case3;
-
-    document.getElementById(
-        "case4ACheckCount"
-    ).textContent =
-        state.checks.case4A;
-
-    document.getElementById(
-        "case4BCheckCount"
-    ).textContent =
-        state.checks.case4B;
-
-    document.getElementById(
-        "case4CCheckCount"
-    ).textContent =
-        state.checks.case4C;
-}
-
-
-/* =============================================================
-   CHECK CASE 1
-============================================================= */
-
-function checkCase1() {
-
-    recordCheck("case1");
-
-    const real =
-        normalize(
-            document
-                .getElementById("case1Real")
-                .value
-        );
-
-    const imaginary =
-        normalize(
-            document
-                .getElementById("case1Imaginary")
-                .value
-        );
-
-    const realCorrect =
-        real ===
-        normalize(case1.real);
-
-    const imaginaryCorrect =
-        imaginary ===
-        normalize(case1.imaginary);
-
-    const explanationComplete =
-        explanationHasContent(
-            "case1Reason"
-        );
-
-    const correct =
-        realCorrect &&
-        imaginaryCorrect &&
-        explanationComplete;
-
-    setMastered(
-        "case1",
-        correct
-    );
-
-    if (correct) {
-
-        showFeedback(
-            "case1Feedback",
-            true,
-            "Case File 1 is complete."
-        );
-
-        return;
-    }
-
-    const issues = [];
-
-    if (!realCorrect) {
-        issues.push(
-            "recheck the real part"
-        );
-    }
-
-    if (!imaginaryCorrect) {
-        issues.push(
-            "recheck the imaginary part"
-        );
-    }
-
-    if (!explanationComplete) {
-        issues.push(
-            "write a more complete explanation"
-        );
-    }
-
-    showFeedback(
-        "case1Feedback",
-        false,
-        "Not complete yet: " +
-        issues.join(", ") +
-        "."
-    );
-}
-
-
-/* =============================================================
-   CHECK CASE 2
-============================================================= */
-
-function checkCase2() {
-
-    recordCheck("case2");
-
-    const complete =
-        explanationHasContent(
-            "case2Explanation"
-        );
-
-    setMastered(
-        "case2",
-        complete
-    );
-
-    if (complete) {
-
-        showFeedback(
-            "case2Feedback",
-            true,
-            "Case File 2 response recorded."
-        );
-
-    } else {
-
-        showFeedback(
-            "case2Feedback",
-            false,
-            "Your explanation needs more detail before this case file is complete."
-        );
-    }
-}
-
-
-/* =============================================================
-   CHECK CASE 3
-============================================================= */
-
-function checkCase3() {
-
-    saveBoardImage(
-        "board3"
-    );
-
-    recordCheck(
-        "case3"
-    );
-
-    const mistake =
-        document.getElementById(
-            "case3Mistake"
-        ).value;
-
-    const answer =
-        normalizeComplex(
-            document
-                .getElementById(
-                    "case3CorrectAnswer"
-                )
-                .value
-        );
-
-    const correct =
-        mistake === case3.type &&
-        answer ===
-            normalizeComplex(
-                case3.correctAnswer
-            );
-
-    setMastered(
-        "case3",
-        correct
-    );
-
-    if (correct) {
-
-        showFeedback(
-            "case3Feedback",
-            true,
-            "Correct. Case File 3 is mastered."
-        );
-
-    } else {
-
-        showFeedback(
-            "case3Feedback",
-            false,
-            "Not quite yet. Recheck the first mistake and the corrected final answer."
-        );
-    }
-}
-
-
-/* =============================================================
-   CHECK CASE 4
-============================================================= */
-
-function checkCase4Problem(slot) {
-
-    const key =
-        `case4${slot}`;
-
-    const boardId =
-        `board4${slot}`;
-
-    saveBoardImage(
-        boardId
-    );
-
-    recordCheck(
-        key
-    );
-
-    const response =
-        normalizeComplex(
-            document
-                .getElementById(
-                    `case4Answer${slot}`
-                )
-                .value
-        );
-
-    const correct =
-        response ===
-        normalizeComplex(
-            case4[slot].answer
-        );
-
-    setMastered(
-        key,
-        correct
-    );
-
-    if (correct) {
-
-        showFeedback(
-            `case4${slot}Feedback`,
-            true,
-            `Correct. Problem ${slot} is mastered.`
-        );
-
-    } else {
-
-        showFeedback(
-            `case4${slot}Feedback`,
-            false,
-            "Not quite yet. Recheck your complex-number operations and simplify your final answer."
-        );
-    }
-}
-
-
-/* =============================================================
-   TIMER
-============================================================= */
-
-function startTimer() {
-
-    updateTimer();
-
-    timerInterval =
-        setInterval(
-            updateTimer,
-            1000
-        );
-}
-
-
-function updateTimer() {
-
-    if (!state.startedAt) {
-        return;
-    }
-
-    const start =
-        new Date(
-            state.startedAt
-        );
-
-    const end =
-        state.completedAt
-            ? new Date(
-                state.completedAt
-            )
-            : new Date();
-
-    const elapsed =
-        Math.max(
-            0,
-            end.getTime() -
-            start.getTime()
-        );
-
-    document.getElementById(
-        "statusTime"
-    ).textContent =
-        formatDurationShort(
-            elapsed
-        );
-}
-
-
-function formatDurationShort(ms) {
-
-    const totalSeconds =
-        Math.floor(
-            ms / 1000
-        );
-
-    const hours =
-        Math.floor(
-            totalSeconds / 3600
-        );
-
-    const minutes =
-        Math.floor(
-            (totalSeconds % 3600) /
-            60
-        );
-
-    const seconds =
-        totalSeconds % 60;
-
-    if (hours > 0) {
-
-        return (
-            hours +
-            ":" +
-            String(minutes)
-                .padStart(2,"0") +
-            ":" +
-            String(seconds)
-                .padStart(2,"0")
-        );
-    }
-
-    return (
-        minutes +
-        ":" +
-        String(seconds)
-            .padStart(2,"0")
-    );
-}
-
-
-function formatDurationLong(ms) {
-
-    const totalSeconds =
-        Math.floor(
-            ms / 1000
-        );
-
-    const hours =
-        Math.floor(
-            totalSeconds / 3600
-        );
-
-    const minutes =
-        Math.floor(
-            (totalSeconds % 3600) /
-            60
-        );
-
-    const seconds =
-        totalSeconds % 60;
-
-    const parts = [];
-
-    if (hours > 0) {
-
-        parts.push(
-            `${hours} hour${hours === 1 ? "" : "s"}`
-        );
-    }
-
-    if (
-        minutes > 0 ||
-        hours > 0
-    ) {
-
-        parts.push(
-            `${minutes} minute${minutes === 1 ? "" : "s"}`
-        );
-    }
-
-    parts.push(
-        `${seconds} second${seconds === 1 ? "" : "s"}`
-    );
-
-    return parts.join(", ");
-}
-
-
-/* =============================================================
-   WHITEBOARDS
-============================================================= */
-
-const boards = {};
-
-
-function initializeBoards() {
-
-    setupBoard("board3");
-    setupBoard("board4A");
-    setupBoard("board4B");
-    setupBoard("board4C");
-}
-
-
-function resizeAllBoards() {
-
-    [
-        "board3",
-        "board4A",
-        "board4B",
-        "board4C"
-    ].forEach(
-        function(id) {
-            resizeBoard(id);
-        }
-    );
-}
-
-
-function setupBoard(canvasId) {
-
-    const canvas =
-        document.getElementById(
-            canvasId
-        );
-
-    if (!canvas) {
-        return;
-    }
-
-    boards[canvasId] = {
-        canvas: canvas,
-        ctx: canvas.getContext("2d"),
-        drawing: false,
-        dirty: false,
-        mode: "draw",
-        size: 3,
-        lastX: 0,
-        lastY: 0
-    };
-
-    resizeBoard(
-        canvasId
-    );
-
-    canvas.addEventListener(
-        "pointerdown",
-        function(event) {
-            beginStroke(
-                canvasId,
-                event
-            );
-        }
-    );
-
-    canvas.addEventListener(
-        "pointermove",
-        function(event) {
-            drawStroke(
-                canvasId,
-                event
-            );
-        }
-    );
-
-    canvas.addEventListener(
-        "pointerup",
-        function(event) {
-            endStroke(
-                canvasId,
-                event
-            );
-        }
-    );
-
-    canvas.addEventListener(
-        "pointercancel",
-        function(event) {
-            endStroke(
-                canvasId,
-                event
-            );
-        }
-    );
-
-    canvas.addEventListener(
-        "lostpointercapture",
-        function() {
-
-            if (boards[canvasId]) {
-                boards[canvasId].drawing =
-                    false;
-            }
-        }
-    );
-}
-
-
-function resizeBoard(canvasId) {
-
-    const board =
-        boards[canvasId];
-
-    if (!board) {
-        return;
-    }
-
-    const canvas =
-        board.canvas;
-
-    const rect =
-        canvas.getBoundingClientRect();
-
-    if (rect.width < 20) {
-
-        requestAnimationFrame(
-            function() {
-                resizeBoard(
-                    canvasId
-                );
-            }
-        );
-
-        return;
-    }
-
-    let savedImage = "";
-
-    if (
-        board.dirty &&
-        canvas.width > 1 &&
-        canvas.height > 1
-    ) {
-
-        savedImage =
-            canvas.toDataURL(
-                "image/png"
-            );
-    }
-
-    const dpr =
-        window.devicePixelRatio ||
-        1;
-
-    const cssWidth =
-        Math.floor(
-            rect.width
-        );
-
-    const cssHeight =
-        window.innerWidth <= 720
-            ? 270
-            : 300;
-
-    canvas.width =
-        Math.floor(
-            cssWidth * dpr
-        );
-
-    canvas.height =
-        Math.floor(
-            cssHeight * dpr
-        );
-
-    canvas.style.width =
-        cssWidth + "px";
-
-    canvas.style.height =
-        cssHeight + "px";
-
-    const ctx =
-        canvas.getContext("2d");
-
-    ctx.setTransform(
-        dpr,
-        0,
-        0,
-        dpr,
-        0,
-        0
-    );
-
-    ctx.lineCap =
-        "round";
-
-    ctx.lineJoin =
-        "round";
-
-    ctx.fillStyle =
-        "#ffffff";
-
-    ctx.fillRect(
-        0,
-        0,
-        cssWidth,
-        cssHeight
-    );
-
-    board.ctx =
-        ctx;
-
-    if (savedImage) {
-
-        const image =
-            new Image();
-
-        image.onload =
-            function() {
-
-                ctx.drawImage(
-                    image,
-                    0,
-                    0,
-                    cssWidth,
-                    cssHeight
-                );
-            };
-
-        image.src =
-            savedImage;
-    }
-}
-
-
-function getCanvasPoint(
-    canvas,
-    event
-) {
-
-    const rect =
-        canvas.getBoundingClientRect();
-
-    return {
-        x:
-            event.clientX -
-            rect.left,
-
-        y:
-            event.clientY -
-            rect.top
-    };
-}
-
-
-function beginStroke(
-    canvasId,
-    event
-) {
-
-    const board =
-        boards[canvasId];
-
-    if (!board) {
-        return;
-    }
-
-    if (
-        event.pointerType === "mouse" &&
-        event.button !== 0
-    ) {
-        return;
-    }
-
-    event.preventDefault();
-
-    const point =
-        getCanvasPoint(
-            board.canvas,
-            event
-        );
-
-    board.drawing =
-        true;
-
-    board.dirty =
-        true;
-
-    board.lastX =
-        point.x;
-
-    board.lastY =
-        point.y;
-
-    try {
-
-        board.canvas
-            .setPointerCapture(
-                event.pointerId
-            );
-
-    } catch (error) {
-        /* Pointer capture is optional. */
-    }
-
-    board.ctx.beginPath();
-
-    board.ctx.arc(
-        point.x,
-        point.y,
-        board.mode === "erase"
-            ? board.size * 2
-            : Math.max(
-                1,
-                board.size / 2
-            ),
-        0,
-        Math.PI * 2
-    );
-
-    board.ctx.fillStyle =
-        board.mode === "erase"
-            ? "#ffffff"
-            : "#1f2933";
-
-    board.ctx.fill();
-}
-
-
-function drawStroke(
-    canvasId,
-    event
-) {
-
-    const board =
-        boards[canvasId];
-
-    if (
-        !board ||
-        !board.drawing
-    ) {
-        return;
-    }
-
-    event.preventDefault();
-
-    const point =
-        getCanvasPoint(
-            board.canvas,
-            event
-        );
-
-    board.ctx.beginPath();
-
-    board.ctx.moveTo(
-        board.lastX,
-        board.lastY
-    );
-
-    board.ctx.lineTo(
-        point.x,
-        point.y
-    );
-
-    if (
-        board.mode === "erase"
-    ) {
-
-        board.ctx.strokeStyle =
-            "#ffffff";
-
-        board.ctx.lineWidth =
-            board.size * 4;
-
-    } else {
-
-        board.ctx.strokeStyle =
-            "#1f2933";
-
-        board.ctx.lineWidth =
-            board.size;
-    }
-
-    board.ctx.stroke();
-
-    board.lastX =
-        point.x;
-
-    board.lastY =
-        point.y;
-}
-
-
-function endStroke(
-    canvasId,
-    event
-) {
-
-    const board =
-        boards[canvasId];
-
-    if (
-        !board ||
-        !board.drawing
-    ) {
-        return;
-    }
-
-    board.drawing =
-        false;
-
-    if (
-        event &&
-        board.canvas.hasPointerCapture &&
-        board.canvas.hasPointerCapture(
-            event.pointerId
-        )
-    ) {
-
-        try {
-
-            board.canvas
-                .releasePointerCapture(
-                    event.pointerId
-                );
-
-        } catch (error) {
-            /* Safe to ignore. */
-        }
-    }
-
-    saveBoardImage(
-        canvasId
-    );
-}
-
-
-function setBoardMode(
-    canvasId,
-    mode
-) {
-
-    const board =
-        boards[canvasId];
-
-    if (!board) {
-        return;
-    }
-
-    board.mode =
-        mode;
-
-    board.canvas.style.cursor =
-        mode === "erase"
-            ? "cell"
-            : "crosshair";
-}
-
-
-function setBoardSize(
-    canvasId,
-    value
-) {
-
-    const board =
-        boards[canvasId];
-
-    if (!board) {
-        return;
-    }
-
-    board.size =
-        Number(value);
-}
-
-
-function clearBoard(
-    canvasId
-) {
-
-    const board =
-        boards[canvasId];
-
-    if (!board) {
-        return;
-    }
-
-    const rect =
-        board.canvas
-            .getBoundingClientRect();
-
-    board.ctx.clearRect(
-        0,
-        0,
-        rect.width,
-        rect.height
-    );
-
-    board.ctx.fillStyle =
-        "#ffffff";
-
-    board.ctx.fillRect(
-        0,
-        0,
-        rect.width,
-        rect.height
-    );
-
-    board.dirty =
-        false;
-
-    state.boardImages[
-        canvasId
-    ] = "";
-}
-
-
-function saveBoardImage(
-    canvasId
-) {
-
-    const board =
-        boards[canvasId];
-
-    if (!board) {
-        return;
-    }
-
-    if (board.dirty) {
-
-        state.boardImages[
-            canvasId
-        ] =
-            board.canvas
-                .toDataURL(
-                    "image/png"
-                );
-
-    } else {
-
-        state.boardImages[
-            canvasId
-        ] = "";
-    }
-}
-
-
-function saveAllBoardImages() {
-
-    saveBoardImage(
-        "board3"
-    );
-
-    saveBoardImage(
-        "board4A"
-    );
-
-    saveBoardImage(
-        "board4B"
-    );
-
-    saveBoardImage(
-        "board4C"
-    );
-}
-
-
-/* =============================================================
-   CONCLUDE
-============================================================= */
-
-function concludeMission() {
-
-    const incomplete = [];
-
-    if (!state.mastered.case1) {
-        incomplete.push(
-            "Case File 1"
-        );
-    }
-
-    if (!state.mastered.case2) {
-        incomplete.push(
-            "Case File 2"
-        );
-    }
-
-    if (!state.mastered.case3) {
-        incomplete.push(
-            "Case File 3"
-        );
-    }
-
-    if (!state.mastered.case4A) {
-        incomplete.push(
-            "Case File 4 — Problem A"
-        );
-    }
-
-    if (!state.mastered.case4B) {
-        incomplete.push(
-            "Case File 4 — Problem B"
-        );
-    }
-
-    if (!state.mastered.case4C) {
-        incomplete.push(
-            "Case File 4 — Problem C"
-        );
-    }
-
-
-    if (
-        incomplete.length > 0
-    ) {
-
-        document.getElementById(
-            "missionFeedback"
-        ).style.display =
-            "block";
-
-        document.getElementById(
-            "correctionList"
-        ).innerHTML =
-            incomplete
-                .map(
-                    function(item) {
-                        return `<p>☐ ${item}</p>`;
-                    }
-                )
-                .join("");
-
-        document.getElementById(
-            "missionFeedback"
-        ).scrollIntoView({
-            behavior: "smooth"
-        });
-
-        return;
-    }
-
-
-    saveAllBoardImages();
-
-    state.completedAt =
-        new Date().toISOString();
-
-    state.completionCode =
-        generateCompletionCode();
-
-    if (timerInterval) {
-
-        clearInterval(
-            timerInterval
-        );
-
-        timerInterval =
-            null;
-    }
-
-    populateCompletionReport();
-
-    document.getElementById(
-        "missionArea"
-    ).style.display =
-        "none";
-
-    document.getElementById(
-        "startCard"
-    ).style.display =
-        "none";
-
-    document.getElementById(
-        "missionFeedback"
-    ).style.display =
-        "none";
-
-    document.getElementById(
-        "completionReport"
-    ).style.display =
-        "block";
-
-    document.getElementById(
-        "completionReport"
-    ).scrollIntoView({
-        behavior: "smooth"
-    });
-}
-
-
-/* =============================================================
-   COMPLETION REPORT
-============================================================= */
-
-function populateCompletionReport() {
-
-    const start =
-        new Date(
-            state.startedAt
-        );
-
-    const end =
-        new Date(
-            state.completedAt
-        );
-
-    const elapsed =
-        end.getTime() -
-        start.getTime();
-
-    const totalChecks =
-        Object.values(
-            state.checks
-        ).reduce(
-            function(total,value) {
-                return total + value;
-            },
-            0
-        );
-
-
-    /* ---------- SUMMARY ---------- */
-
-    setText(
-        "reportStudentName",
-        state.studentName
-    );
-
-    setText(
-        "reportStarted",
-        formatDateTime(start)
-    );
-
-    setText(
-        "reportCompleted",
-        formatDateTime(end)
-    );
-
-    setText(
-        "reportElapsed",
-        formatDurationLong(
-            elapsed
-        )
-    );
-
-    setText(
-        "reportTotalChecks",
-        totalChecks
-    );
-
-    setText(
-        "reportCompletionCode",
-        state.completionCode
-    );
-
-
-    /* ---------- CASE 1 ---------- */
-
-    document.getElementById(
-        "reportCase1Problem"
-    ).innerHTML =
-        document.getElementById(
-            "case1Number"
-        ).innerHTML;
-
-    setText(
-        "reportCase1Real",
-        document.getElementById(
-            "case1Real"
-        ).value.trim()
-    );
-
-    setText(
-        "reportCase1Imaginary",
-        document.getElementById(
-            "case1Imaginary"
-        ).value.trim()
-    );
-
-    setText(
-        "reportCase1Reason",
-        document.getElementById(
-            "case1Reason"
-        ).value.trim()
-    );
-
-    setText(
-        "reportCase1Checks",
-        state.checks.case1
-    );
-
-
-    /* ---------- CASE 2 ---------- */
-
-    document.getElementById(
-        "reportCase2Problem"
-    ).innerHTML =
-        document.getElementById(
-            "case2CorrectWork"
-        ).innerHTML;
-
-    setText(
-        "reportCase2Explanation",
-        document.getElementById(
-            "case2Explanation"
-        ).value.trim()
-    );
-
-    setText(
-        "reportCase2Checks",
-        state.checks.case2
-    );
-
-
-    /* ---------- CASE 3 ---------- */
-
-    document.getElementById(
-        "reportCase3Problem"
-    ).innerHTML =
-        document.getElementById(
-            "case3IncorrectWork"
-        ).innerHTML;
-
-    setText(
-        "reportCase3Mistake",
-        getSelectedText(
-            "case3Mistake"
-        )
-    );
-
-    setText(
-        "reportCase3Answer",
-        document.getElementById(
-            "case3CorrectAnswer"
-        ).value.trim()
-    );
-
-    setText(
-        "reportCase3Checks",
-        state.checks.case3
-    );
-
-    populateBoardReport(
-        "board3",
-        "reportBoard3",
-        "Student whiteboard work for Case File 3"
-    );
-
-
-    /* ---------- CASE 4A ---------- */
-
-    document.getElementById(
-        "reportCase4AProblem"
-    ).innerHTML =
-        document.getElementById(
-            "case4ProblemA"
-        ).innerHTML;
-
-    setText(
-        "reportCase4AAnswer",
-        document.getElementById(
-            "case4AnswerA"
-        ).value.trim()
-    );
-
-    setText(
-        "reportCase4AChecks",
-        state.checks.case4A
-    );
-
-    populateBoardReport(
-        "board4A",
-        "reportBoard4A",
-        "Student whiteboard work for Case File 4 Problem A"
-    );
-
-
-    /* ---------- CASE 4B ---------- */
-
-    document.getElementById(
-        "reportCase4BProblem"
-    ).innerHTML =
-        document.getElementById(
-            "case4ProblemB"
-        ).innerHTML;
-
-    setText(
-        "reportCase4BAnswer",
-        document.getElementById(
-            "case4AnswerB"
-        ).value.trim()
-    );
-
-    setText(
-        "reportCase4BChecks",
-        state.checks.case4B
-    );
-
-    populateBoardReport(
-        "board4B",
-        "reportBoard4B",
-        "Student whiteboard work for Case File 4 Problem B"
-    );
-
-
-    /* ---------- CASE 4C ---------- */
-
-    document.getElementById(
-        "reportCase4CProblem"
-    ).innerHTML =
-        document.getElementById(
-            "case4ProblemC"
-        ).innerHTML;
-
-    setText(
-        "reportCase4CAnswer",
-        document.getElementById(
-            "case4AnswerC"
-        ).value.trim()
-    );
-
-    setText(
-        "reportCase4CChecks",
-        state.checks.case4C
-    );
-
-    populateBoardReport(
-        "board4C",
-        "reportBoard4C",
-        "Student whiteboard work for Case File 4 Problem C"
-    );
-
-
-    /* ---------- CERTIFICATE ---------- */
-
-    setText(
-        "certName",
-        state.studentName
-    );
-
-    setText(
-        "certDate",
-        end.toLocaleDateString()
-    );
-
-    setText(
-        "certTime",
-        end.toLocaleTimeString()
-    );
-
-    setText(
-        "certElapsed",
-        formatDurationLong(
-            elapsed
-        )
-    );
-
-    setText(
-        "certChecks",
-        totalChecks
-    );
-
-    setText(
-        "certCode",
-        state.completionCode
-    );
-
-    setText(
-        "certCase1Checks",
-        state.checks.case1
-    );
-
-    setText(
-        "certCase2Checks",
-        state.checks.case2
-    );
-
-    setText(
-        "certCase3Checks",
-        state.checks.case3
-    );
-
-    setText(
-        "certCase4AChecks",
-        state.checks.case4A
-    );
-
-    setText(
-        "certCase4BChecks",
-        state.checks.case4B
-    );
-
-    setText(
-        "certCase4CChecks",
-        state.checks.case4C
-    );
-}
-
-
-/* =============================================================
-   REPORT HELPERS
-============================================================= */
-
-function populateBoardReport(
-    boardId,
-    reportId,
-    altText
-) {
-
-    const container =
-        document.getElementById(
-            reportId
-        );
-
-    container.innerHTML =
-        "";
-
-    const imageData =
-        state.boardImages[
-            boardId
-        ];
-
-    if (!imageData) {
-
-        const p =
-            document.createElement(
-                "p"
-            );
-
-        p.className =
-            "no-board";
-
-        p.textContent =
-            "No whiteboard work was recorded.";
-
-        container.appendChild(
-            p
-        );
-
-        return;
-    }
-
-    const img =
-        document.createElement(
-            "img"
-        );
-
-    img.src =
-        imageData;
-
-    img.alt =
-        altText;
-
-    container.appendChild(
-        img
-    );
-}
-
-
-function setText(id,value) {
-
-    document.getElementById(
-        id
-    ).textContent =
-        value;
-}
-
-
-function getSelectedText(id) {
-
-    const select =
-        document.getElementById(
-            id
-        );
-
-    if (
-        !select ||
-        select.selectedIndex < 0
-    ) {
-        return "";
-    }
-
-    return select.options[
-        select.selectedIndex
-    ].text;
-}
-
-
-function formatDateTime(date) {
-
-    return (
-        date.toLocaleDateString() +
-        " " +
-        date.toLocaleTimeString()
-    );
-}
-
-
-function generateCompletionCode() {
-
-    return (
-        "U2W1-" +
-        Math.random()
-            .toString(36)
-            .substring(2,8)
-            .toUpperCase()
-    );
-}
-
-
-/* =============================================================
-   RESPONSIVE CANVAS RESIZING
-============================================================= */
-
-window.addEventListener(
-    "resize",
-    debounce(
-        function() {
-
-            if (missionStarted) {
-                resizeAllBoards();
-            }
-
-        },
-        300
-    )
-);
-
-
-function debounce(callback,delay) {
-
-    let timer;
-
-    return function() {
-
-        clearTimeout(timer);
-
-        timer =
-            setTimeout(
-                callback,
-                delay
-            );
-    };
-}
-
+function drawStroke(id,e){const b=boardState[id];if(!b||!b.drawing)return;const p=point(b,e);b.ctx.beginPath();b.ctx.moveTo(b.lastX,b.lastY);b.ctx.lineTo(p.x,p.y);b.ctx.lineCap="round";b.ctx.lineJoin="round";b.ctx.lineWidth=b.size;b.ctx.strokeStyle=b.mode==="erase"?"#fff":"#1f2933";b.ctx.stroke();b.lastX=p.x;b.lastY=p.y}
+function endStroke(id,e){const b=boardState[id];if(!b)return;b.drawing=false;saveBoard(id)}
+function setBoardMode(id,mode){if(boardState[id])boardState[id].mode=mode}
+function setBoardSize(id,v){if(boardState[id])boardState[id].size=Number(v)}
+function clearBoard(id){const b=boardState[id];if(!b)return;const r=b.c.getBoundingClientRect();b.ctx.fillStyle="#fff";b.ctx.fillRect(0,0,r.width,r.height);b.dirty=false;state.boards[id]=""}
+function saveBoard(id){const b=boardState[id];if(!b)return;state.boards[id]=b.dirty?b.c.toDataURL("image/png"):""}
+window.addEventListener("resize",()=>{if(boardState.board3)resizeBoard("board3");if(boardState.board5)resizeBoard("board5")});
 </script>
-
 </body>
 </html>
